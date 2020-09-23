@@ -7,6 +7,9 @@
 # include <errno.h>
 # include <fcntl.h>
 # include <signal.h>
+# include <sys/param.h>
 # include "../libft/libft.h"
+
+void	builtin_pwd(void);
 
 #endif
