@@ -9,6 +9,7 @@
 # include <signal.h>
 # include <sys/param.h>
 # include "../libft/libft.h"
+# include "get_next_line.h"
 
 void	builtin_pwd(void);
 
