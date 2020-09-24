@@ -1,19 +1,20 @@
 #include "../includes/minishell.h"
 
 #define MAX_PATH 100
-#define LF 10
 
 /*
-**	buffer에는 절대경로가 저장되어 ㅇㅆ다.
+**	crtl + c (EOF)가 입력될 때 까지 get_next_line을 실행하여
+**  문자열을 입력받고, 입력 받은 문자열을 출력해주었다.
+**	그래서 임시로 prompt 처럼 보이게 하였다.
 */
 int			print_prompt()
 {
-	char	buffer[MAX_PATH];
+	char	buffer[MAXPATHLEN];
 	char	*value;
 	char	*line;
 	int		ret;
 
-	value = getcwd(buffer, MAX_PATH);
+	value = getcwd(buffer, MAXPATHLEN);
 
 	if (value != 0)
 	{
