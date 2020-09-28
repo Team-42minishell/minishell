@@ -9,7 +9,8 @@ INCLIB = -Llibft -lft
 LIBFT = ./libft
 
 SRCS =	./src/main.c \
-		./src/get_next_line.c
+		./src/get_next_line.c \
+		./src/builtin_cd.c
 
 OBJS = $(SRCS:.c=.o)
 

@@ -25,13 +25,21 @@ int			print_prompt()
 			if (ret == -1)
 				printf("get_next_line error\n");
 
-			ft_putstr(line);
-			ft_putchar_fd('\n', 1);
-			free(line);
-	
+			if (ft_strncmp(line, "cd", 2) == 0)
+			{
+				builtin_cd(line + 3, value, buffer);
+			}
+			else
+			{
+				ft_putstr(line);
+				ft_putchar_fd('\n', 1);
+			}
+			
+
 			ft_putstr("catshell@");
 			ft_putstr_fd(buffer, 1);
 			ft_putstr(" ");
+			free(line);
 		}
 		free(line);
 	}
@@ -40,8 +48,7 @@ int			print_prompt()
 
 int			main()
 {
-	printf("hello world\n");
-
 	print_prompt();
+
 	return (0);
 }
