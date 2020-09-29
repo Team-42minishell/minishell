@@ -14,5 +14,6 @@
 
 void	builtin_pwd(void);
 void	builtin_cd(char *line, char *ptr, char *buffer);
+void	builtin_echo(char *arg);
 
 #endif
