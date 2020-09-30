@@ -26,4 +26,9 @@ void	builtin_echo(char *arg);
 
 void	free_double_pointer(char **args);
 
+/*
+**	pre_process_line.c
+*/
+int		process_line(char *line);
+
 #endif
