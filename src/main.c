@@ -28,20 +28,6 @@ int			print_prompt()
 
 			ft_putstr("catshell@");
 			ft_putstr_fd(buffer, 1);
-
-			if (ft_strncmp(line, "env", 3) == 0 && line[3] == 0)
-			{
-				//for test
-				int	idx = -1;
-				while (g_env_list[++idx].key)
-				{
-					ft_putstr_fd(g_env_list[idx].key, 1);
-					ft_putstr_fd("=", 1);
-					ft_putstr_fd(g_env_list[idx].value, 1);
-					ft_putstr_fd("\n", 1);
-				}
-			}
-
 			ft_putstr(" ");
 			free(line);
 		}
@@ -76,7 +62,7 @@ void		parse_env(char *envp[])
 			exit(1);
 		}
 		g_env_list[idx].key = ft_strdup(env_list[0]);
-		g_env_list[idx].value = ft_strdup(env_list[1]);
+		g_env_list[idx].value = env_list[1] == NULL ? "" : ft_strdup(env_list[1]);
 		free(env_list[0]);
 		free(env_list[1]);
 		free(env_list);

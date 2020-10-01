@@ -1,19 +1,19 @@
 #include "../includes/minishell.h"
 
 /*
-** builtin_echo: print args. for example, args is "echo hello world".
+** builtin_echo: print line. for example, line is "echo hello world".
 ** so, arg_list[0] must be "echo".
-** if -n option exist, args ends without newline.
-** otherwise, args ends with newline.
+** if -n option exist, line ends without newline.
+** otherwise, line ends with newline.
 */
 
-void	builtin_echo(char *args)
+void	builtin_echo(char *line)
 {
 	char	**arg_list;
 	int		idx;
 	int		n_option;
 
-	if (!(arg_list = ft_split(args, ' ')))
+	if (!(arg_list = ft_split(line, ' ')))
 	{
 		ft_putstr_fd("error: can't allocate memory.\n", 2);
 		return ;
@@ -23,10 +23,10 @@ void	builtin_echo(char *args)
 		ft_putstr_fd("\n", 1);
 		return ;
 	}
-	idx = 0;
-	n_option = ft_strncmp(arg_list[0], "-n", ft_strlen(arg_list[0]));
+	idx = 1;
+	n_option = ft_strncmp(arg_list[1], "-n", ft_strlen(arg_list[1]));
 	if (n_option != 0)
-		idx = -1;
+		idx = 0;
 	while (arg_list[++idx])
 	{
 		ft_putstr_fd(arg_list[idx], 1);
