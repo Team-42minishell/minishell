@@ -8,13 +8,13 @@
 int			print_prompt()
 {
 	char	buffer[MAXPATHLEN];
-	char	*value;
+	char	*current_path;
 	char	*line;
 	int		ret;
 
-	value = getcwd(buffer, MAXPATHLEN);
+	current_path = getcwd(buffer, MAXPATHLEN);
 
-	if (value != 0)
+	if (current_path != 0)
 	{
 		ft_putstr("catshell@");
 		ft_putstr_fd(buffer, 1);
@@ -24,12 +24,12 @@ int			print_prompt()
 		{
 			if (ret == -1)
 				printf("get_next_line error\n");
+			process_line(line, current_path, buffer);
 
-			if (ft_strncmp(line, "cd", 2) == 0)
-			{
-				builtin_cd(line + 3, value, buffer);
-			}
-			else if (ft_strncmp(line, "env", 3) == 0 && line[3] == 0)
+			ft_putstr("catshell@");
+			ft_putstr_fd(buffer, 1);
+
+			if (ft_strncmp(line, "env", 3) == 0 && line[3] == 0)
 			{
 				//for test
 				int	idx = -1;
@@ -41,15 +41,7 @@ int			print_prompt()
 					ft_putstr_fd("\n", 1);
 				}
 			}
-			else
-			{
-				ft_putstr(line);
-				ft_putchar_fd('\n', 1);
-			}
-			
 
-			ft_putstr("catshell@");
-			ft_putstr_fd(buffer, 1);
 			ft_putstr(" ");
 			free(line);
 		}

@@ -16,3 +16,10 @@ done
 - ps를 사용하여 process_id를 찾는다.
 - kill (process_id)
 - 입력하여 강제 종료한다.
+
+## git
+브랜치 생성
+브랜치 로컬 삭제
+- git branch -d [브랜치명]
+브랜치 원격 삭제
+- git push origin :[브랜치명]

@@ -21,9 +21,14 @@ typedef	struct	s_env
 t_env	*g_env_list;
 
 void	builtin_pwd(void);
-void	builtin_cd(char *line, char *ptr, char *buffer);
+void	builtin_cd(char *line, char *current_path, char *buffer);
 void	builtin_echo(char *arg);
 
 void	free_double_pointer(char **args);
+
+/*
+**	pre_process_line.c
+*/
+int		process_line(char *line, char *value, char *buffer);
 
 #endif

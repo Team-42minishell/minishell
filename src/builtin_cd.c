@@ -10,15 +10,15 @@
 **	chdir에 line을 입력하면 원하는 디렉토리로 이동하고, 0을 반환한다.
 **	디렉토리가 없으면 -1이 반환
 */
-void		builtin_cd(char *line, char *ptr, char *buffer)
+void		builtin_cd(char *line, char *current_path, char *buffer)
 {
 	int		ret;
 
 	ret = chdir(line);
 	if (ret == 0)
 	{
-		ptr = getcwd(buffer ,MAXPATHLEN);
-		if (ptr == NULL)
+		current_path = getcwd(buffer ,MAXPATHLEN);
+		if (current_path == NULL)
 			ft_putstr_fd(strerror(errno), 1);
 	}
 	else if (ret == -1)
