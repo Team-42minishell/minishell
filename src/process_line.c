@@ -1,20 +1,21 @@
 #include "../includes/minishell.h"
 
-/*
-int		exec_butlin(char *line)
+int		exec_buitlin(char *line, char *value, char *buffer)
 {
-	char	*arg;
-	char	*buffer[MAXPATHLEN];
-	char	*value;
+	//char	*arg;
+
 	// 환경변수
 	if (ft_strncmp(line, "cd", 2) == 0)
-		builtin_cd(line, value, buffer);
-	else if (ft_strncmp(line, "echo", 4) == 0)
-		builtin_echo(arg);
+		builtin_cd(line + 3, value, buffer);
 	else if (ft_strncmp(line, "pwd", 3) == 0)
 		builtin_pwd();
+	else
+		return (0);
+	//else if (ft_strncmp(line, "echo", 4) == 0)
+	//	builtin_echo(arg);
+	return (1);
 }
-*/
+
 
 int		split_size(char **ptr)
 {
@@ -46,7 +47,6 @@ char	**pre_process(char *line)
 	i = -1;
 	while (split_ptr[++i])
 	{
-		printf("split // i : %d, str : %s\n", i, split_ptr[i]);
 		if ((tmp = ft_strtrim(split_ptr[i], " ")) == NULL || tmp[0] == 0)
 		{
 			ft_putstr_fd("str_trim errror\n", 1);
@@ -55,8 +55,7 @@ char	**pre_process(char *line)
 		len = 0;
 		len = strlen(tmp);
 		res[i] = ft_calloc(sizeof(char), len + 1);
-		ft_strlcpy(res[i], tmp, len);
-		printf("trim // i : %d, str : %s\n", i, res[i]);
+		ft_strlcpy(res[i], tmp, len + 1);
 		free(tmp);
 	}
 	free_double_pointer(split_ptr);
@@ -64,7 +63,7 @@ char	**pre_process(char *line)
 	return (res);
 }
 
-int		process_line(char *line)
+int		process_line(char *line, char *value, char *buffer)
 {
 	int		i;
 	char	**ptr_data;
@@ -88,6 +87,7 @@ int		process_line(char *line)
 		if (!exec_dollar(ptr_data[i]) && !exec_butlin(ptr_data[i]))
 			exec_otehrs(ptr_data[i]);
 			*/
+		exec_buitlin(ptr_data[i], value, buffer);
 	}
 	free_double_pointer(ptr_data);
 	return (1);

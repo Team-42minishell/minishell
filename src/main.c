@@ -24,13 +24,14 @@ int			print_prompt()
 		{
 			if (ret == -1)
 				printf("get_next_line error\n");
-			/*
+			process_line(line, value, buffer);
 
-			if (ft_strncmp(line, "cd", 2) == 0)
-			{
-				builtin_cd(line + 3, value, buffer);
-			}
-			else if (ft_strncmp(line, "env", 3) == 0 && line[3] == 0)
+			ft_putstr("catshell@");
+			ft_putstr_fd(buffer, 1);
+			ft_putstr(" ");
+			free(line);
+			/*
+			if (ft_strncmp(line, "env", 3) == 0 && line[3] == 0)
 			{
 				//for test
 				int	idx = -1;
@@ -42,19 +43,7 @@ int			print_prompt()
 					ft_putstr_fd("\n", 1);
 				}
 			}
-			else
-			{
-				ft_putstr(line);
-				ft_putchar_fd('\n', 1);
-			}
-			
-
-			ft_putstr("catshell@");
-			ft_putstr_fd(buffer, 1);
-			ft_putstr(" ");
 			*/
-			process_line(line);
-			free(line);
 		}
 		free(line);
 	}

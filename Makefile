@@ -11,6 +11,7 @@ LIBFT = ./libft
 SRCS =	./src/main.c \
 		./src/get_next_line.c \
 		./src/builtin_cd.c \
+		./src/builtin_pwd.c \
 		./src/builtin_echo.c \
 		./src/process_line.c
 

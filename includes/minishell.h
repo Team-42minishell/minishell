@@ -29,6 +29,6 @@ void	free_double_pointer(char **args);
 /*
 **	pre_process_line.c
 */
-int		process_line(char *line);
+int		process_line(char *line, char *value, char *buffer);
 
 #endif
