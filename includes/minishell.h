@@ -23,6 +23,7 @@ t_env	*g_env_list;
 void	builtin_pwd(void);
 void	builtin_cd(char *line, char *current_path, char *buffer);
 void	builtin_echo(char *arg);
+void	builtin_env();
 
 void	free_double_pointer(char **args);
 
