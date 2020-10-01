@@ -1,20 +1,6 @@
 #include "../includes/minishell.h"
 
 /*
-** free_double_pointer
-*/
-
-void	free_double_pointer(char **args)
-{
-	int	idx;
-
-	idx = -1;
-	while (args[++idx])
-		free(args[idx]);
-	free(args);
-}
-
-/*
 ** builtin_echo: print args. for example, args is "echo hello world".
 ** so, arg_list[0] must be "echo".
 ** if -n option exist, args ends without newline.
