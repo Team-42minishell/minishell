@@ -49,7 +49,8 @@ char	**pre_process(char *line)
 	if ((res = ft_calloc(sizeof(char *), size + 1)) == NULL)
 	{
 		ft_putstr_fd("ft_calloc error\n", 1);
-		exit(1);
+		// exit(1);
+		return (0);
 	}
 	res[size] = 0;
 	i = -1;
@@ -58,7 +59,7 @@ char	**pre_process(char *line)
 		if ((tmp = ft_strtrim(split_ptr[i], " ")) == NULL || tmp[0] == 0)
 		{
 			ft_putstr_fd("str_trim errror\n", 1);
-			exit(1);
+			return (0);
 		}
 		len = ft_strlen(tmp);
 		res[i] = ft_calloc(sizeof(char), len + 1);
@@ -75,7 +76,8 @@ int		process_line(char *line, char *current_path, char *buffer)
 	int		i;
 	char	**ptr_data;
 
-	ptr_data = pre_process(line);
+	if ((ptr_data = pre_process(line)) == NULL || ptr_data[0] == NULL)
+		return (0);
 	i = -1;
 	while (ptr_data[++i])
 	{
