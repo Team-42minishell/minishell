@@ -8,13 +8,13 @@
 int			print_prompt()
 {
 	char	buffer[MAXPATHLEN];
-	char	*value;
+	char	*current_path;
 	char	*line;
 	int		ret;
 
-	value = getcwd(buffer, MAXPATHLEN);
+	current_path = getcwd(buffer, MAXPATHLEN);
 
-	if (value != 0)
+	if (current_path != 0)
 	{
 		ft_putstr("catshell@");
 		ft_putstr_fd(buffer, 1);
@@ -24,7 +24,7 @@ int			print_prompt()
 		{
 			if (ret == -1)
 				printf("get_next_line error\n");
-			process_line(line, value, buffer);
+			process_line(line, current_path, buffer);
 
 			ft_putstr("catshell@");
 			ft_putstr_fd(buffer, 1);

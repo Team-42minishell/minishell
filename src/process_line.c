@@ -4,13 +4,13 @@
 **	문자열에서 명령어가 있으면 그것을 실행한다.
 **
 */
-int		exec_buitlin(char *line, char *value, char *buffer)
+int		exec_buitlin(char *line, char *current_path, char *buffer)
 {
 	//char	*arg;
 
 	// 환경변수
 	if (ft_strncmp(line, "cd", 2) == 0)
-		builtin_cd(line + 3, value, buffer);
+		builtin_cd(line + 3, current_path, buffer);
 	else if (ft_strncmp(line, "pwd", 3) == 0)
 		builtin_pwd();
 	else
@@ -49,7 +49,7 @@ char	**pre_process(char *line)
 	if ((res = ft_calloc(sizeof(char *), size + 1)) == NULL)
 	{
 		ft_putstr_fd("ft_calloc error\n", 1);
-		return (0);
+		exit(1);
 	}
 	res[size] = 0;
 	i = -1;
@@ -58,10 +58,9 @@ char	**pre_process(char *line)
 		if ((tmp = ft_strtrim(split_ptr[i], " ")) == NULL || tmp[0] == 0)
 		{
 			ft_putstr_fd("str_trim errror\n", 1);
-			return (0);
+			exit(1);
 		}
-		len = 0;
-		len = strlen(tmp);
+		len = ft_strlen(tmp);
 		res[i] = ft_calloc(sizeof(char), len + 1);
 		ft_strlcpy(res[i], tmp, len + 1);
 		free(tmp);
@@ -71,7 +70,7 @@ char	**pre_process(char *line)
 	return (res);
 }
 
-int		process_line(char *line, char *value, char *buffer)
+int		process_line(char *line, char *current_path, char *buffer)
 {
 	int		i;
 	char	**ptr_data;
@@ -95,7 +94,7 @@ int		process_line(char *line, char *value, char *buffer)
 		if (!exec_dollar(ptr_data[i]) && !exec_butlin(ptr_data[i]))
 			exec_otehrs(ptr_data[i]);
 			*/
-		exec_buitlin(ptr_data[i], value, buffer);
+		exec_buitlin(ptr_data[i], current_path, buffer);
 	}
 	free_double_pointer(ptr_data);
 	return (1);
