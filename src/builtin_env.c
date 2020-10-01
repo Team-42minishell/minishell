@@ -1,5 +1,9 @@
 #include "../includes/minishell.h"
 
+/*
+ * builtin_env: list environments.
+*/
+
 void	builtin_env(void)
 {
 	int	idx;
