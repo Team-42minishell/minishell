@@ -1,5 +1,9 @@
 #include "../includes/minishell.h"
 
+/*
+**	문자열에서 명령어가 있으면 그것을 실행한다.
+**
+*/
 int		exec_buitlin(char *line, char *value, char *buffer)
 {
 	//char	*arg;
@@ -27,6 +31,10 @@ int		split_size(char **ptr)
 	return (i);
 }
 
+/*
+**	세미콜론을 기준으로 문자열을 나눈다.
+**	나눈 문자열에서 공백을 제거하고, 정제된 문자열의 주소값을 리턴해준다.
+*/
 char	**pre_process(char *line)
 {
 	char	**split_ptr;

@@ -28,9 +28,7 @@ int			print_prompt()
 
 			ft_putstr("catshell@");
 			ft_putstr_fd(buffer, 1);
-			ft_putstr(" ");
-			free(line);
-			/*
+
 			if (ft_strncmp(line, "env", 3) == 0 && line[3] == 0)
 			{
 				//for test
@@ -43,7 +41,9 @@ int			print_prompt()
 					ft_putstr_fd("\n", 1);
 				}
 			}
-			*/
+
+			ft_putstr(" ");
+			free(line);
 		}
 		free(line);
 	}
@@ -83,14 +83,13 @@ void		parse_env(char *envp[])
 	}
 }	
 
-// int			main(int argc, char *argv[], char *envp[])
-int		main()
+int			main(int argc, char *argv[], char *envp[])
 {
 	// it's not good. but because of gcc option, argc and argv are used.
-	//if (argc != 1)
-	//	argv[0] = NULL;
+	if (argc != 1)
+		argv[0] = NULL;
 
-	//parse_env(envp);
+	parse_env(envp);
 	print_prompt();
 
 	return (0);
