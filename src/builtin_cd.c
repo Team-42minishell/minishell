@@ -13,7 +13,10 @@
 void		builtin_cd(char *line, char *current_path, char *buffer)
 {
 	int		ret;
+	int		len;
 
+	if ((len = find_quote(line)) != 0)
+		line = make_newline(line, len);
 	ret = chdir(line);
 	if (ret == 0)
 	{
@@ -30,5 +33,5 @@ void		builtin_cd(char *line, char *current_path, char *buffer)
 		ft_putstr("\n");
 		errno = 0;
 	}
-	
+	free(line);
 }
