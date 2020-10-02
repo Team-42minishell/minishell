@@ -81,7 +81,10 @@ int		process_line(char *line, char *current_path, char *buffer)
 	char	**ptr_data;
 
 	if ((ptr_data = pre_process(line)) == NULL || ptr_data[0] == NULL)
+	{
+		free_double_pointer(ptr_data);
 		return (0);
+	}
 	i = -1;
 	while (ptr_data[++i])
 	{
