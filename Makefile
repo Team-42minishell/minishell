@@ -15,6 +15,7 @@ SRCS =	./src/main.c \
 		./src/builtin_echo.c \
 		./src/builtin_env.c \
 		./src/process_line.c \
+		./src/parse_quote.c \
 		./src/utils.c
 
 OBJS = $(SRCS:.c=.o)

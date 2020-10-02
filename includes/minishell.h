@@ -31,5 +31,10 @@ void	free_double_pointer(char **args);
 **	pre_process_line.c
 */
 int		process_line(char *line, char *value, char *buffer);
+/*
+**	parse_quote.c
+*/
+int		find_quote(char *line);
+char	*make_newline(char *line, int str_len);
 
 #endif
