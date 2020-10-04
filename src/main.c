@@ -25,7 +25,6 @@ int			print_prompt()
 			if (ret == -1)
 				printf("get_next_line error\n");
 			process_line(line, current_path, buffer);
-
 			ft_putstr("catshell@");
 			ft_putstr_fd(buffer, 1);
 			ft_putstr(" ");

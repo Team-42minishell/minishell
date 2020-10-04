@@ -18,7 +18,10 @@ int		exec_buitlin(char *line, char *current_path, char *buffer)
 	else if (ft_strncmp(line, "echo", 4) == 0 && (line[4] == 0 || line[4] == ' '))
 		builtin_echo(line);
 	else
+	{
+		ft_putstr_fd("exec_builtin error\n", 1);
 		return (0);
+	}
 	//else if (ft_strncmp(line, "echo", 4) == 0)
 	//	builtin_echo(arg);
 	return (1);
@@ -60,9 +63,10 @@ char	**pre_process(char *line)
 	i = -1;
 	while (split_ptr[++i])
 	{
-		if ((tmp = ft_strtrim(split_ptr[i], " ")) == NULL || tmp[0] == 0)
+		if ((tmp = ft_strtrim(split_ptr[i], " ")) == NULL)
 		{
-			ft_putstr_fd("str_trim errror\n", 1);
+			ft_putstr_fd("str_trim errror1\n", 1);
+			free_double_pointer(split_ptr);
 			return (0);
 		}
 		len = ft_strlen(tmp);
@@ -80,8 +84,18 @@ int		process_line(char *line, char *current_path, char *buffer)
 	int		i;
 	char	**ptr_data;
 
-	if ((ptr_data = pre_process(line)) == NULL || ptr_data[0] == NULL)
+	if ((ptr_data = pre_process(line)) == NULL)
+	{
+		ft_putstr_fd("ptr_data_error1\n", 1);
+		free_double_pointer(ptr_data);
 		return (0);
+	}
+	else if (ptr_data[0] == NULL)
+	{
+		ft_putstr_fd("ptr_data_error2\n", 1);
+		free_double_pointer(ptr_data);
+		return (0);
+	}
 	i = -1;
 	while (ptr_data[++i])
 	{
