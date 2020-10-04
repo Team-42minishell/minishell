@@ -26,16 +26,23 @@ int			print_prompt()
 		{
 			if (ret == -1)
 				printf("get_next_line error\n");
-			if (!(new_line = parse_line(line)))
+			if ((new_line = parse_line(line)) != NULL)
 			{
 				i = -1;
 				while (new_line[++i])
 				{
-					ft_putstr_fd(new_line[i], 1);
-					ft_putstr("\n");
+					//ft_putstr("start : ");
+					// ft_putstr_fd(new_line[i], 1);
+					//ft_putstr("\n");
+					exec_buitlin(new_line[i], current_path, buffer);
 				}
 				free_double_pointer(new_line);
 			}
+			else
+			{
+				//ft_putstr("main error\n");
+			}
+			
 			ft_putstr("catshell@");
 			ft_putstr_fd(buffer, 1);
 			ft_putstr(" ");

@@ -40,5 +40,8 @@ char	**parse_line(char *line);
 */
 int		find_quote(char *line);
 char	*make_newline(char *line, int str_len);
-
+/*
+**	exec_cmds
+*/
+int		exec_buitlin(char *line, char *current_path, char *buffer);
 #endif
