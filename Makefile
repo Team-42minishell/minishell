@@ -14,7 +14,7 @@ SRCS =	./src/main.c \
 		./src/builtin_pwd.c \
 		./src/builtin_echo.c \
 		./src/builtin_env.c \
-		./src/process_line.c \
+		./src/parse_line.c \
 		./src/parse_quote.c \
 		./src/utils.c
 

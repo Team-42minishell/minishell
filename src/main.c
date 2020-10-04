@@ -7,10 +7,12 @@
 */
 int			print_prompt()
 {
+	char	**new_line;
 	char	buffer[MAXPATHLEN];
 	char	*current_path;
 	char	*line;
 	int		ret;
+	int		i;
 
 	current_path = getcwd(buffer, MAXPATHLEN);
 
@@ -24,11 +26,19 @@ int			print_prompt()
 		{
 			if (ret == -1)
 				printf("get_next_line error\n");
-			process_line(line, current_path, buffer);
+			if (!(new_line = parse_line(line)))
+			{
+				i = -1;
+				while (new_line[++i])
+				{
+					ft_putstr_fd(new_line[i], 1);
+					ft_putstr("\n");
+				}
+				free_double_pointer(new_line);
+			}
 			ft_putstr("catshell@");
 			ft_putstr_fd(buffer, 1);
 			ft_putstr(" ");
-			free(line);
 		}
 		free(line);
 	}

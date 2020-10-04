@@ -25,12 +25,16 @@ void	builtin_cd(char *line, char *current_path, char *buffer);
 void	builtin_echo(char *arg);
 void	builtin_env();
 
-void	free_double_pointer(char **args);
-
 /*
-**	pre_process_line.c
+**	utils.c
+**
 */
-int		process_line(char *line, char *value, char *buffer);
+void	free_double_pointer(char **args);
+int		two_ptr_size(char **ptr);
+/*
+**	parse_line.c
+*/
+char	**parse_line(char *line);
 /*
 **	parse_quote.c
 */
