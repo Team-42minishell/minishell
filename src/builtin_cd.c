@@ -33,5 +33,4 @@ void		builtin_cd(char *line, char *current_path, char *buffer)
 		ft_putstr("\n");
 		errno = 0;
 	}
-	free(line);
 }

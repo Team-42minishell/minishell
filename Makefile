@@ -10,12 +10,13 @@ LIBFT = ./libft
 
 SRCS =	./src/main.c \
 		./src/get_next_line.c \
+		./src/parse_line.c \
+		./src/parse_quote.c \
+		./src/exec_cmds.c \
 		./src/builtin_cd.c \
 		./src/builtin_pwd.c \
 		./src/builtin_echo.c \
 		./src/builtin_env.c \
-		./src/process_line.c \
-		./src/parse_quote.c \
 		./src/utils.c
 
 OBJS = $(SRCS:.c=.o)

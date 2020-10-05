@@ -1,5 +1,14 @@
 #include "../includes/minishell.h"
 
+int		two_ptr_size(char **ptr)
+{
+	int		i;
+
+	i = 0;
+	while (ptr[i])
+		i++;
+	return (i);
+}
 /*
 ** free_double_pointer
 */
