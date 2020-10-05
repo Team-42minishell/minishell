@@ -10,27 +10,29 @@
 **	chdir에 line을 입력하면 원하는 디렉토리로 이동하고, 0을 반환한다.
 **	디렉토리가 없으면 -1이 반환
 */
-void		builtin_cd(char *line, char *current_path, char *buffer)
+void		builtin_cd(char *line)
 {
-	int		ret;
-	int		len;
+	//int		ret;
+	//int		len;
+	char	*path;
 
-	if ((len = find_quote(line)) != 0)
-		line = make_newline(line, len);
-	ret = chdir(line);
-	if (ret == 0)
+	if (line[0] == '~' || line == NULL || ft_strlen(line) == 1 || !(*line))
 	{
-		current_path = getcwd(buffer ,MAXPATHLEN);
-		if (current_path == NULL)
-			ft_putstr_fd(strerror(errno), 1);
+		path = find_value("HOME");
+		if (path == NULL || chdir(path) == -1)
+			ft_putendl_fd(strerror(errno), 1);
+		return ;
 	}
-	else if (ret == -1)
+	else if (line[0] == '$')
 	{
-		ft_putstr("cd: ");
-		ft_putstr_fd(strerror(errno), 1);
-		ft_putstr(" ");
-		ft_putstr(line);
-		ft_putstr("\n");
-		errno = 0;
+		path = find_value(line++);
+		if (path == NULL || chdir(path) == -1)
+			ft_putendl_fd(strerror(errno), 1);
+		return ;
+	}
+	else
+	{
+		if (chdir(line) == -1)
+			ft_putendl_fd(strerror(errno), 1);
 	}
 }
