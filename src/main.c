@@ -42,7 +42,7 @@ int			print_prompt()
 			{
 				//ft_putstr("main error\n");
 			}
-			
+			current_path = getcwd(buffer, MAXPATHLEN);
 			ft_putstr("catshell@");
 			ft_putstr_fd(buffer, 1);
 			ft_putstr(" ");

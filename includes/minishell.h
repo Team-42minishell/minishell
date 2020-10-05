@@ -21,16 +21,10 @@ typedef	struct	s_env
 t_env	*g_env_list;
 
 void	builtin_pwd(void);
-void	builtin_cd(char *line, char *current_path, char *buffer);
+void	builtin_cd(char *line);
 void	builtin_echo(char *arg);
 void	builtin_env();
 
-/*
-**	utils.c
-**
-*/
-void	free_double_pointer(char **args);
-int		two_ptr_size(char **ptr);
 /*
 **	parse_line.c
 */
@@ -44,4 +38,15 @@ char	*make_newline(char *line, int str_len);
 **	exec_cmds
 */
 int		exec_buitlin(char *line, char *current_path, char *buffer);
+
+
+/*
+**	utils.c
+*/
+void	free_double_pointer(char **args);
+int		two_ptr_size(char **ptr);
+/*
+**	utils_env.c
+*/
+char	*find_value(char *key);
 #endif
