@@ -12,27 +12,33 @@
 */
 void		builtin_cd(char *line)
 {
-	//int		ret;
-	//int		len;
+	int		flag;
+	int		len;
 	char	*path;
 
+	flag = 0;
+	if ((len = find_quote(line)) != 0)
+	{
+		line = make_newline(line, len);
+		flag = 1;
+	}
 	if (line[0] == '~' || line == NULL || ft_strlen(line) == 1 || !(*line))
 	{
 		path = find_value("HOME");
 		if (path == NULL || chdir(path) == -1)
 			ft_putendl_fd(strerror(errno), 1);
-		return ;
 	}
 	else if (line[0] == '$')
 	{
 		path = find_value(line++);
 		if (path == NULL || chdir(path) == -1)
 			ft_putendl_fd(strerror(errno), 1);
-		return ;
 	}
 	else
 	{
 		if (chdir(line) == -1)
 			ft_putendl_fd(strerror(errno), 1);
 	}
+	if (flag)
+		free(line);
 }
