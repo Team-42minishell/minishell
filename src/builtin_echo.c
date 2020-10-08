@@ -21,6 +21,7 @@ void	builtin_echo(char *line)
 	if (arg_list[1] == NULL)
 	{
 		ft_putstr_fd("\n", 1);
+		free_double_pointer(arg_list);
 		return ;
 	}
 	idx = 1;
