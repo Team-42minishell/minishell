@@ -34,7 +34,7 @@ int			print_prompt()
 					//ft_putstr("start : ");
 					// ft_putstr_fd(new_line[i], 1);
 					//ft_putstr("\n");
-					exec_buitlin(new_line[i], current_path, buffer);
+					exec_buitlin(new_line[i]);
 				}
 				free_double_pointer(new_line);
 			}

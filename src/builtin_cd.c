@@ -28,6 +28,7 @@ void		builtin_cd(char *line)
 		if (path == NULL || chdir(path) == -1)
 			ft_putendl_fd(strerror(errno), 1);
 	}
+	// export 추가 이후 테스트 필요
 	else if (line[0] == '$')
 	{
 		path = find_value(line++);
