@@ -37,7 +37,7 @@ char	*make_newline(char *line, int str_len);
 /*
 **	exec_cmds
 */
-int		exec_buitlin(char *line, char *current_path, char *buffer);
+int		exec_buitlin(char *line);
 
 
 /*

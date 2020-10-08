@@ -4,13 +4,13 @@
 **	문자열에서 명령어가 있으면 그것을 실행한다.
 **
 */
-int		exec_buitlin(char *line, char *current_path, char *buffer)
+int		exec_buitlin(char *line)
 {
 	//char	*arg;
 
 	// 환경변수
 	if (ft_strncmp(line, "cd", 2) == 0 && (line[2] == 0 || line[2] == ' '))
-		builtin_cd(line + 3, current_path, buffer);
+		builtin_cd(line + 3);
 	else if (ft_strncmp(line, "pwd", 3) == 0 && (line[3] == 0 || line[3] == ' '))
 		builtin_pwd();
 	else if (ft_strncmp(line, "env", 3) == 0 && (line[3] == 0 || line[3] == ' '))
