@@ -17,6 +17,8 @@ int		exec_buitlin(char *line)
 		builtin_env();
 	else if (ft_strncmp(line, "echo", 4) == 0 && (line[4] == 0 || line[4] == ' '))
 		builtin_echo(line);
+	else if (ft_strncmp(line, "export", 6) == 0 && (line[6] == 0 || line[6] == ' '))
+		builtin_export(line);
 	else
 	{
 		ft_putstr_fd("exec_builtin error\n", 1);
