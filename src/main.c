@@ -61,10 +61,8 @@ void		parse_env(char *envp[])
 	char	**env_list;
 	int		idx;
 
-	idx = -1;
-	while (envp[++idx])
-		;
-	if (!(g_env_list = (t_env*)malloc(sizeof(t_env) * idx + 1)))
+	idx = two_ptr_size(envp);
+	if (!(g_env_list = (t_env*)malloc(sizeof(t_env) * (idx + 2))))
 	{
 		ft_putstr_fd("error: can't allocate.\n", 2);
 		exit(1);
@@ -79,10 +77,12 @@ void		parse_env(char *envp[])
 		}
 		g_env_list[idx].key = ft_strdup(env_list[0]);
 		g_env_list[idx].value = env_list[1] == NULL ? "" : ft_strdup(env_list[1]);
-		free(env_list[0]);
-		free(env_list[1]);
-		free(env_list);
+		free_double_pointer(env_list);
 	}
+	g_env_list[idx].key = ft_strdup("OLDPWD");
+	g_env_list[idx].value = NULL;
+	g_env_list[idx + 1].key = NULL;
+	g_env_list[idx + 1].value = NULL;
 }	
 
 int			main(int argc, char *argv[], char *envp[])
