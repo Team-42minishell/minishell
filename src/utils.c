@@ -9,9 +9,11 @@ int		two_ptr_size(char **ptr)
 		i++;
 	return (i);
 }
+
 /*
 ** free_double_pointer
 */
+
 void	free_double_pointer(char **args)
 {
 	int	idx;

@@ -25,6 +25,7 @@ void			builtin_cd(char *line);
 void			builtin_echo(char *arg);
 void			builtin_env();
 void			builtin_export(char *line);
+void			builtin_unset(char *line);
 
 /*
 **	parse_line.c

@@ -33,11 +33,7 @@ void	print_env_list(void)
 	{
 		if (ft_strncmp(g_env_list[idx].key, "_", 1) == 0
 				&& g_env_list[idx].key[1] == 0)
-		{
-			if (does_exist_env_oldpwd() == 0)
-				ft_putstr_fd("declare -x OLDPWD\n", 1);
 			continue ;
-		}
 		ft_putstr_fd("declare -x ", 1);
 		ft_putstr_fd(g_env_list[idx].key, 1);
 		if (g_env_list[idx].value == NULL)

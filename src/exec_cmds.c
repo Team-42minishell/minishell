@@ -19,6 +19,8 @@ int		exec_buitlin(char *line)
 		builtin_echo(line);
 	else if (ft_strncmp(line, "export", 6) == 0 && (line[6] == 0 || line[6] == ' '))
 		builtin_export(line);
+	else if (ft_strncmp(line, "unset", 5) == 0 && (line[5] == 0 || line[5] == ' '))
+		builtin_unset(line);
 	else
 	{
 		ft_putstr_fd("exec_builtin error\n", 1);
