@@ -21,6 +21,8 @@ int		exec_buitlin(char *line)
 		builtin_export(line);
 	else if (ft_strncmp(line, "unset", 5) == 0 && (line[5] == 0 || line[5] == ' '))
 		builtin_unset(line);
+	else if (ft_strncmp(line, "exit", 4) == 0 && (line[4] == 0 || line[4] == ' '))
+		builtin_exit(line);
 	else
 	{
 		ft_putstr_fd("exec_builtin error\n", 1);
