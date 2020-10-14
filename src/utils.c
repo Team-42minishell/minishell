@@ -23,3 +23,12 @@ void	free_double_pointer(char **args)
 		free(args[idx]);
 	free(args);
 }
+
+/*
+** set_exit_status
+*/
+
+void	set_exit_status(int status)
+{
+	g_exit_status = status;
+}
