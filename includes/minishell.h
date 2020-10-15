@@ -19,6 +19,7 @@ typedef	struct	s_env
 }				t_env;
 
 t_env			*g_env_list;
+int				g_exit_status;
 
 void			builtin_pwd(void);
 void			builtin_cd(char *line);
@@ -46,6 +47,7 @@ int				exec_buitlin(char *line);
 */
 void			free_double_pointer(char **args);
 int				two_ptr_size(char **ptr);
+void			set_exit_status(int status);
 /*
 **	utils_env.c
 */

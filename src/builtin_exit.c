@@ -8,11 +8,13 @@ void	builtin_exit(char *line)
 	if (!(arg_list = ft_split(line, ' ')))
 	{
 		ft_putstr_fd("error: can't allocate memory.\n", 2);
+		set_exit_status(1);
 		return ;
 	}
 	if (two_ptr_size(arg_list) > 2)
 	{
 		ft_putstr_fd("error: exit: too many arguments.\n", 2);
+		set_exit_status(1);
 		return ;
 	}
 	ft_putstr("exit\n");

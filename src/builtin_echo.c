@@ -13,9 +13,11 @@ void	builtin_echo(char *line)
 	int		idx;
 	int		n_option;
 
+	set_exit_status(0);
 	if (!(arg_list = ft_split(line, ' ')))
 	{
 		ft_putstr_fd("error: can't allocate memory.\n", 2);
+		set_exit_status(1);
 		return ;
 	}
 	if (arg_list[1] == NULL)

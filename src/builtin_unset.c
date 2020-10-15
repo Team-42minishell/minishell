@@ -1,6 +1,6 @@
 #include "../includes/minishell.h"
 
-void	make_new_env_list2(char *key, int num_envs)
+void	make_new_env_list_unset(char *key, int num_envs)
 {
 	int		idx;
 	int		idx2;
@@ -17,6 +17,7 @@ void	make_new_env_list2(char *key, int num_envs)
 	{
 		ft_putstr_fd("error: can't allocate memory.\n", 2);
 		orig_env_list = NULL;
+		set_exit_status(1);
 		return ;
 	}
 	idx = -1;
@@ -47,9 +48,11 @@ void	builtin_unset(char *line)
 	int		idx;
 	char	**arg_list;
 
+	set_exit_status(0);
 	if (!(arg_list = ft_split(line, ' ')))
 	{
 		ft_putstr_fd("error: can't allocate memory.\n", 2);
+		set_exit_status(1);
 		return ;
 	}
 	if (arg_list[1] == NULL)
@@ -59,6 +62,6 @@ void	builtin_unset(char *line)
 	}
 	idx = 0;
 	while (arg_list[++idx])
-		make_new_env_list2(arg_list[idx], get_number_envs());
+		make_new_env_list_unset(arg_list[idx], get_number_envs());
 	free_double_pointer(arg_list);
 }

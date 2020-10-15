@@ -11,6 +11,7 @@ void	builtin_env(void)
 {
 	int	idx;
 
+	set_exit_status(0);
 	idx = -1;
 	while (g_env_list[++idx].key)
 	{

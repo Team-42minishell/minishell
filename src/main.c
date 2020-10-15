@@ -91,8 +91,9 @@ int			main(int argc, char *argv[], char *envp[])
 	if (argc != 1)
 		argv[0] = NULL;
 
+	g_exit_status = 0;
 	parse_env(envp);
 	print_prompt();
 
-	return (0);
+	return (g_exit_status);
 }

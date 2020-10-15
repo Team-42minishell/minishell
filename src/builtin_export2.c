@@ -43,6 +43,7 @@ void	make_new_env_list(char **key, char **value, int num_envs)
 		ft_putstr_fd("error: can't allocate memory.\n", 2);
 		free(*key);
 		free(*value);
+		set_exit_status(1);
 		return ;
 	}
 	idx = -1;
@@ -76,7 +77,10 @@ void	set_env(char *arg)
 
 	parsing_idx = get_parsing_idx(arg);
 	if (parsing_idx == -1)
+	{
+		set_exit_status(1);
 		return ;
+	}
 	key = ft_substr(arg, 0, parsing_idx);
 	value = ft_substr(arg, parsing_idx + 1, ft_strlen(arg));
 	convert_empty_string_to_null(&value);
@@ -98,9 +102,11 @@ void	builtin_export(char *line)
 	int		idx;
 	char	**arg_list;
 
+	set_exit_status(0);
 	if (!(arg_list = ft_split(line, ' ')))
 	{
 		ft_putstr_fd("error: can't allocate memory.\n", 2);
+		set_exit_status(1);
 		return ;
 	}
 	if (arg_list[1] == NULL)
