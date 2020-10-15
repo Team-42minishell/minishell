@@ -29,6 +29,18 @@ int		does_exist_same_env(char **key, char **value, int num_envs)
 }
 
 /*
+** set_env_list_last_data: this function sets the last data of g_env_list.
+*/
+
+void	set_env_list_last_data(char *key, char *value, int idx)
+{
+	g_env_list[idx].key = ft_strdup(key);
+	g_env_list[idx].value = value == NULL ? NULL : ft_strdup(value);
+	g_env_list[idx + 1].key = NULL;
+	g_env_list[idx + 1].value = NULL;
+}
+
+/*
 ** make_new_env_list: expand g_env_list.
 */
 
@@ -56,10 +68,7 @@ void	make_new_env_list(char **key, char **value, int num_envs)
 		free(orig_env_list[idx].value);
 	}
 	free(orig_env_list);
-	g_env_list[idx].key = ft_strdup(*key);
-	g_env_list[idx].value = *value == NULL ? NULL : ft_strdup(*value);
-	g_env_list[idx + 1].key = NULL;
-	g_env_list[idx + 1].value = NULL;
+	set_env_list_last_data(*key, *value, idx);
 	free(*key);
 	free(*value);
 }

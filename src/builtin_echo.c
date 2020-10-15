@@ -1,10 +1,31 @@
 #include "../includes/minishell.h"
 
 /*
+** print_args_echo: print args.
+** if -n option exist(n_option = 1), line ends without newline.
+** otherwise(n_option = 0), line ends with newline.
+*/
+
+void	print_args_echo(int n_option, char **arg_list)
+{
+	int		idx;
+
+	idx = 1;
+	if (n_option != 0)
+		idx = 0;
+	while (arg_list[++idx])
+	{
+		ft_putstr_fd(arg_list[idx], 1);
+		if (arg_list[idx + 1])
+			ft_putstr_fd(" ", 1);
+	}
+	if (n_option != 0)
+		ft_putstr_fd("\n", 1);
+}
+
+/*
 ** builtin_echo: print line. for example, line is "echo hello world".
 ** so, arg_list[0] must be "echo".
-** if -n option exist, line ends without newline.
-** otherwise, line ends with newline.
 */
 
 void	builtin_echo(char *line)
@@ -28,15 +49,6 @@ void	builtin_echo(char *line)
 	}
 	idx = 1;
 	n_option = ft_strncmp(arg_list[1], "-n", ft_strlen(arg_list[1]));
-	if (n_option != 0)
-		idx = 0;
-	while (arg_list[++idx])
-	{
-		ft_putstr_fd(arg_list[idx], 1);
-		if (arg_list[idx + 1])
-			ft_putstr_fd(" ", 1);
-	}
-	if (n_option != 0)
-		ft_putstr_fd("\n", 1);
+	print_args_echo(n_option, arg_list);
 	free_double_pointer(arg_list);
 }

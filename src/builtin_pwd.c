@@ -5,6 +5,7 @@
 ** if getcwd() fails, it returns -1 and pwd prints error msg.
 ** if success, pwd prints the path of current working directory.
 */
+
 void	builtin_pwd(void)
 {
 	char	buf[MAXPATHLEN];
