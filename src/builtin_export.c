@@ -85,17 +85,3 @@ void	convert_empty_string_to_null(char **value)
 		free(tmp);
 	}
 }
-
-/*
-** get_number_envs: return the number of environments.
-*/
-
-int		get_number_envs(void)
-{
-	int		idx;
-
-	idx = -1;
-	while (g_env_list[++idx].key)
-		;
-	return (idx);
-}

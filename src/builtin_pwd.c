@@ -5,6 +5,7 @@
 ** if getcwd() fails, it returns -1 and pwd prints error msg.
 ** if success, pwd prints the path of current working directory.
 */
+
 void	builtin_pwd(void)
 {
 	char	buf[MAXPATHLEN];
@@ -12,9 +13,11 @@ void	builtin_pwd(void)
 
 	if (!(ptr = getcwd(buf, MAXPATHLEN)))
 	{
-		write(2, "pwd: Failed to get path. Check the buffer size.\n", 48);
+		ft_putstr_fd("pwd: Failed to get path. Check the buffer size.\n", 2);
+		set_exit_status(1);
 		return ;
 	}
-	write(1, ptr, ft_strlen(ptr));
-	write(1, "\n", 1);
+	ft_putstr_fd(ptr, 1);
+	ft_putstr("\n");
+	set_exit_status(0);
 }
