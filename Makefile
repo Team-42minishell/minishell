@@ -22,7 +22,9 @@ SRCS =	./src/main.c \
 		./src/builtin_unset.c \
 		./src/builtin_exit.c \
 		./src/utils.c \
-		./src/utils_env.c
+		./src/utils_env.c \
+		./src/tokenizer.c \
+		./src/utils_memory.c
 
 OBJS = $(SRCS:.c=.o)
 

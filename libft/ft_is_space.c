@@ -6,13 +6,13 @@
 /*   By: sungslee <sungslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 11:31:36 by sungslee          #+#    #+#             */
-/*   Updated: 2020/10/19 15:26:01 by sungslee         ###   ########.fr       */
+/*   Updated: 2020/10/19 16:04:30 by sungslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int				ft_isspace(int c)
+int				ft_is_space(int c)
 {
 	if (c == '\t' || c == '\r' || \
 	c == '\v' || c == '\f' || c == ' ')

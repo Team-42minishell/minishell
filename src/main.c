@@ -7,12 +7,12 @@
 */
 int			print_prompt()
 {
-	char	**new_line;
+	//char	**new_line;
 	char	buffer[MAXPATHLEN];
 	char	*current_path;
 	char	*line;
 	int		ret;
-	int		i;
+	//int		i;
 
 	current_path = getcwd(buffer, MAXPATHLEN);
 
@@ -26,6 +26,7 @@ int			print_prompt()
 		{
 			if (ret == -1)
 				printf("get_next_line error\n");
+			/*
 			if ((new_line = parse_line(line)) != NULL)
 			{
 				i = -1;
@@ -42,6 +43,7 @@ int			print_prompt()
 			{
 				//ft_putstr("main error\n");
 			}
+			*/
 			current_path = getcwd(buffer, MAXPATHLEN);
 			ft_putstr("catshell@");
 			ft_putstr_fd(buffer, 1);
@@ -85,6 +87,30 @@ void		parse_env(char *envp[])
 	g_env_list[idx + 1].value = NULL;
 }	
 
+int			process_line1(char *line)
+{
+	char	**tokens;
+
+	tokens = tokenizer(line);
+	//ft_free_str(&line);
+	
+	if (tokens == NULL)
+	{
+		printf("hello null\n");
+	}
+	else
+	{
+		int i = -1;
+		while (tokens[++i])
+		{
+			printf("%s\n", tokens[i]);
+		}
+		/* code */
+	}
+	
+	return (TRUE);
+}
+
 int			main(int argc, char *argv[], char *envp[])
 {
 	// it's not good. but because of gcc option, argc and argv are used.
@@ -93,7 +119,14 @@ int			main(int argc, char *argv[], char *envp[])
 
 	g_exit_status = 0;
 	parse_env(envp);
-	print_prompt();
+	//print_prompt();
+	char	*line;
 
+	while (TRUE)
+	{
+		if (!get_next_line(0, &line))
+			break;
+		process_line1(line);
+	}
 	return (g_exit_status);
 }

@@ -11,6 +11,9 @@
 # include <sys/param.h>
 # include "../libft/libft.h"
 # include "get_next_line.h"
+# include "types.h"
+# include "macro.h"
+
 
 typedef	struct	s_env
 {
@@ -68,4 +71,14 @@ void			set_env_list_last_data(char *key, char *value, int idx);
 void			make_new_env_list(char **key, char **value, int num_envs);
 void			set_env(char *arg);
 void			builtin_export(char *line);
+
+/*
+**	tokenizer.c
+*/
+char			**tokenizer(char *line);
+/*
+**	memory.c
+*/
+char			**ft_realloc_double_str(char **strs_ref, char *item);
+int				ft_free_str(char **str);
 #endif
