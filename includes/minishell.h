@@ -79,6 +79,6 @@ char			**tokenizer(char *line);
 /*
 **	memory.c
 */
-char			**ft_realloc_double_str(char **strs_ref, char *item);
+char			**ft_realloc_double_str(char ***strs_ref, char *item);
 int				ft_free_str(char **str);
 #endif

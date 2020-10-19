@@ -91,7 +91,7 @@ char			**tokenizer(char *line)
 		if (get_end(line, &tool))
 		{
 			token = ft_substr(line, tool.start, tool.idx - tool.start + 1);
-			ft_realloc_double_str(tokens, token);
+			ft_realloc_double_str(&tokens, token);
 			ft_free_str(&token);
 			tool.start=  -1;
 			tool.prev = 0;

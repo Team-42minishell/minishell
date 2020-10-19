@@ -92,7 +92,7 @@ int			process_line1(char *line)
 	char	**tokens;
 
 	tokens = tokenizer(line);
-	//ft_free_str(&line);
+	ft_free_str(&line);
 	
 	if (tokens == NULL)
 	{
@@ -105,6 +105,7 @@ int			process_line1(char *line)
 		{
 			printf("%s\n", tokens[i]);
 		}
+		free_double_pointer(tokens);
 		/* code */
 	}
 	
