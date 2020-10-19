@@ -6,7 +6,7 @@
 #    By: sungslee <sungslee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/08 20:19:19 by sungslee          #+#    #+#              #
-#    Updated: 2020/08/08 20:38:50 by sungslee         ###   ########.fr        #
+#    Updated: 2020/10/19 15:25:10 by sungslee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,7 +65,11 @@ SRCS =	ft_isalpha.c \
 		ft_is_set.c \
 		ft_itoa_base.c \
 		ft_lltoa.c \
-		ft_lltoa_base.c
+		ft_lltoa_base.c \
+		ft_strcmp.c \
+		ft_free.c \
+		ft_realloc.c \
+		ft_is_space.c
 NAME = libft.a
 OBJS = ${SRCS:.c=.o}
 HEAD = libft.h
