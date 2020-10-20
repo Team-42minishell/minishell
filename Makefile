@@ -3,7 +3,7 @@ NAME = minishell
 INCS = -I./includes
 CC = gcc
 RM = rm -f
-CFLAGS = -g -Wall -Wextra -Werror $(INCS)
+# CFLAGS = -g -Wall -Wextra -Werror $(INCS)
 INCLIB = -Llibft -lft
 
 LIBFT = ./libft
@@ -24,7 +24,9 @@ SRCS =	./src/main.c \
 		./src/utils.c \
 		./src/utils_env.c \
 		./src/tokenizer.c \
-		./src/utils_memory.c
+		./src/utils_memory.c \
+		./src/lexer.c \
+		./src/utils_string.c
 
 OBJS = $(SRCS:.c=.o)
 

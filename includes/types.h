@@ -30,9 +30,9 @@ typedef struct	s_tokenizer
 */
 typedef struct	s_lexer
 {
-	char	*type;
 	char	**seqs;
 	char	**format;
+	char	type;
 	int		len;
 	int		idx;
 	int		i;

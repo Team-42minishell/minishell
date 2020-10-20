@@ -36,7 +36,7 @@
 # define LESS       'L'
 # define STRING  	'C'
 # define ENTER   	'F'
-
+# define SPACE		'S'
 /*
 ** error msg
 */

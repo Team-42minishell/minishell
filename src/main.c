@@ -90,25 +90,15 @@ void		parse_env(char *envp[])
 int			process_line1(char *line)
 {
 	char	**tokens;
+	t_table	tmp_table;
+	t_table	cur_table;
 
 	tokens = tokenizer(line);
 	ft_free_str(&line);
+	if (!lexer(tokens))
+		return (TRUE);
 	
-	if (tokens == NULL)
-	{
-		printf("hello null\n");
-	}
-	else
-	{
-		int i = -1;
-		while (tokens[++i])
-		{
-			printf("%s\n", tokens[i]);
-		}
-		free_double_pointer(tokens);
-		/* code */
-	}
-	
+	//|| !(tmp_table = parse_tokens(tokens)))
 	return (TRUE);
 }
 
@@ -127,6 +117,7 @@ int			main(int argc, char *argv[], char *envp[])
 	{
 		if (!get_next_line(0, &line))
 			break;
+		//printf("%d", ft_strlen(line));
 		process_line1(line);
 	}
 	return (g_exit_status);

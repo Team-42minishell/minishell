@@ -81,4 +81,13 @@ char			**tokenizer(char *line);
 */
 char			**ft_realloc_double_str(char ***strs_ref, char *item);
 int				ft_free_str(char **str);
+/*
+**	lexer.c
+*/
+int				lexer(char **tokens);
+/*
+**	utils_string.c
+*/
+int				right_qoute(char *src);
+int				right_bracket(char *src);
 #endif
