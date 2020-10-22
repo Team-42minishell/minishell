@@ -26,7 +26,10 @@ SRCS =	./src/main.c \
 		./src/tokenizer.c \
 		./src/utils_memory.c \
 		./src/lexer.c \
-		./src/utils_string.c
+		./src/utils_string.c \
+		./src/parser.c \
+		./src/utils_get_parser.c \
+		./src/utils_set_parser.c
 
 OBJS = $(SRCS:.c=.o)
 
