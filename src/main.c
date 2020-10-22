@@ -32,6 +32,9 @@ int			print_prompt()
 	int		ret;
 	int		i;
 
+	signal(SIGINT, (void *)sig_handler);
+	signal(SIGQUIT, (void *)sig_handler);
+
 	current_path = getcwd(buffer, MAXPATHLEN);
 
 	if (current_path != 0)
@@ -106,16 +109,15 @@ void		parse_env(char *envp[])
 	g_env_list[idx + 1].value = NULL;
 }	
 
-int			main(int argc, char *argv[], char *envp[])
+int			main(int argc, char **argv, char **envp)
 {
 	// it's not good. but because of gcc option, argc and argv are used.
 	if (argc != 1)
 		argv[0] = NULL;
 
 	g_exit_status = 0;
+	g_envp = envp;
 	parse_env(envp);
-	signal(SIGINT, (void *)sig_handler);
-	signal(SIGQUIT, (void *)sig_handler);
 	print_prompt();
 
 	return (g_exit_status);

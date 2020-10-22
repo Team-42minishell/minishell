@@ -9,6 +9,7 @@
 # include <signal.h>
 # include <string.h>
 # include <sys/param.h>
+# include <sys/stat.h>
 # include "../libft/libft.h"
 # include "get_next_line.h"
 
@@ -20,6 +21,7 @@ typedef	struct	s_env
 
 t_env			*g_env_list;
 int				g_exit_status;
+char			**g_envp;
 
 void			builtin_pwd(void);
 void			builtin_cd(char *line);
@@ -68,4 +70,8 @@ void			set_env_list_last_data(char *key, char *value, int idx);
 void			make_new_env_list(char **key, char **value, int num_envs);
 void			set_env(char *arg);
 void			builtin_export(char *line);
+/*
+**	exec_cmd_path_env.c
+*/
+void			exec_cmd_path_env(char *cmd);
 #endif
