@@ -25,12 +25,12 @@ void		sig_handler(int signo)
 */
 int			print_prompt()
 {
-	char	**new_line;
+	//char	**new_line;
 	char	buffer[MAXPATHLEN];
 	char	*current_path;
 	char	*line;
 	int		ret;
-	int		i;
+	//int		i;
 
 	current_path = getcwd(buffer, MAXPATHLEN);
 
@@ -47,6 +47,7 @@ int			print_prompt()
 				builtin_exit("exit");
 			if (ret == -1)
 				printf("get_next_line error\n");
+			/*
 			if ((new_line = parse_line(line)) != NULL)
 			{
 				i = -1;
@@ -63,6 +64,7 @@ int			print_prompt()
 			{
 				//ft_putstr("main error\n");
 			}
+			*/
 			current_path = getcwd(buffer, MAXPATHLEN);
 			ft_putstr("catshell@");
 			ft_putstr_fd(buffer, 1);
@@ -106,6 +108,33 @@ void		parse_env(char *envp[])
 	g_env_list[idx + 1].value = NULL;
 }	
 
+int			process_line1(char *line)
+{
+	char	**tokens;
+	t_table	*table;
+	t_table	*first_table;
+
+	tokens = tokenizer(line);
+	ft_free_str(&line);
+	if (!lexer(tokens) || !(table = parser(tokens)))
+		return (TRUE);
+	free_double_pointer(tokens);
+	first_table = table;
+	while (table)
+	{
+		
+		execute_table(table);
+		table = table->next;
+	}
+	free_tables(first_table);
+	return (1);
+}
+
+void		display_prompt(void)
+{
+	ft_putstr_fd("catshell$ ", 1);
+}
+
 int			main(int argc, char *argv[], char *envp[])
 {
 	// it's not good. but because of gcc option, argc and argv are used.
@@ -114,9 +143,18 @@ int			main(int argc, char *argv[], char *envp[])
 
 	g_exit_status = 0;
 	parse_env(envp);
+	char	*line;
 	signal(SIGINT, (void *)sig_handler);
 	signal(SIGQUIT, (void *)sig_handler);
 	print_prompt();
 
+	while (TRUE)
+	{
+		display_prompt();
+		if (!get_next_line(0, &line))
+			break;
+		//printf("%d", ft_strlen(line));
+		process_line1(line);
+	}
 	return (g_exit_status);
 }

@@ -5,6 +5,8 @@ int		two_ptr_size(char **ptr)
 	int		i;
 
 	i = 0;
+	if (!ptr || !(*ptr))
+		return (0);
 	while (ptr[i])
 		i++;
 	return (i);
@@ -18,6 +20,8 @@ void	free_double_pointer(char **args)
 {
 	int	idx;
 
+	if (!args || !(*args))
+		return ;
 	idx = -1;
 	while (args[++idx])
 		free(args[idx]);
