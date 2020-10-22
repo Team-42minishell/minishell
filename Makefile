@@ -29,7 +29,11 @@ SRCS =	./src/main.c \
 		./src/utils_string.c \
 		./src/parser.c \
 		./src/utils_get_parser.c \
-		./src/utils_set_parser.c
+		./src/utils_set_parser.c \
+		./src/execute.c \
+		./src/pwd.c \
+		./src/cd.c \
+		./src/utils_free.c
 
 OBJS = $(SRCS:.c=.o)
 

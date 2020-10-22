@@ -90,16 +90,28 @@ void		parse_env(char *envp[])
 int			process_line1(char *line)
 {
 	char	**tokens;
-	t_table	tmp_table;
-	t_table	cur_table;
+	t_table	*table;
+	t_table	*first_table;
 
 	tokens = tokenizer(line);
 	ft_free_str(&line);
-	if (!lexer(tokens))
+	if (!lexer(tokens) || !(table = parser(tokens)))
 		return (TRUE);
-	
-	//|| !(tmp_table = parse_tokens(tokens)))
-	return (TRUE);
+	free_double_pointer(tokens);
+	first_table = table;
+	while (table)
+	{
+		
+		execute_table(table);
+		table = table->next;
+	}
+	free_tables(first_table);
+	return (1);
+}
+
+void		display_prompt(void)
+{
+	ft_putstr_fd("catshell$ ", 1);
 }
 
 int			main(int argc, char *argv[], char *envp[])
@@ -115,6 +127,7 @@ int			main(int argc, char *argv[], char *envp[])
 
 	while (TRUE)
 	{
+		display_prompt();
 		if (!get_next_line(0, &line))
 			break;
 		//printf("%d", ft_strlen(line));

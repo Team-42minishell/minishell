@@ -23,6 +23,10 @@ typedef	struct	s_env
 
 t_env			*g_env_list;
 int				g_exit_status;
+int				*g_pipes;
+int				g_res;
+int				g_maxfd;
+int				g_fd;
 
 void			builtin_pwd(void);
 void			builtin_cd(char *line);
@@ -112,4 +116,23 @@ t_redir			*get_last_redir(t_table *table);
 void	set_command_arg(char **tokens, t_lexer *lexer, t_table *table);
 void	set_command_cmd(char **tokens, t_lexer *lexer, t_parser *parser, t_table *table);
 void	set_redir_file(char **tokens, t_lexer *lexer, t_table *table);
+/*
+**	execute
+*/
+void	execute_table(t_table	*table);
+/*
+**	pwd
+*/
+void		cmd_pwd(void);
+/*
+**	cd
+*/
+void	cmd_cd(t_command *command);
+
+/*
+**	utils.free
+*/
+void	free_redir_list(t_redir *redir);
+void	free_job_list(t_job *job);
+void	free_tables(t_table *table);
 #endif
