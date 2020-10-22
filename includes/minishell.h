@@ -128,6 +128,10 @@ void		cmd_pwd(void);
 **	cd
 */
 void	cmd_cd(t_command *command);
+/*
+**	echo
+*/
+void	cmd_echo(t_command *cmd);
 
 /*
 **	utils.free
