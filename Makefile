@@ -33,6 +33,7 @@ SRCS =	./src/main.c \
 		./src/execute.c \
 		./src/pwd.c \
 		./src/cd.c \
+		./src/echo.c \
 		./src/utils_free.c
 
 OBJS = $(SRCS:.c=.o)
