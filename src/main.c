@@ -1,5 +1,23 @@
 #include "../includes/minishell.h"
 
+void		sig_handler(int signo)
+{
+	char	buffer[MAXPATHLEN];
+	char	*current_path;
+
+	if (signo == SIGINT)
+	{
+		current_path = getcwd(buffer, MAXPATHLEN);
+		ft_putstr("\b\b  \b\b\n");
+		ft_putstr("catshell@");
+		ft_putstr_fd(buffer, 1);
+		ft_putstr(" ");
+		set_exit_status(1);
+	}
+	if (signo == SIGQUIT)
+		ft_putstr("\b\b  \b\b");
+}
+
 /*
 **	crtl + c (EOF)가 입력될 때 까지 get_next_line을 실행하여
 **  문자열을 입력받고, 입력 받은 문자열을 출력해주었다.
@@ -22,8 +40,11 @@ int			print_prompt()
 		ft_putstr_fd(buffer, 1);
 		ft_putstr(" ");
 
-		while ((ret = get_next_line(0, &line)))
+		while (1)
 		{
+			ret = get_next_line(0, &line);
+			if (ft_strlen(line) == 0 && ret == 0)
+				builtin_exit("exit");
 			if (ret == -1)
 				printf("get_next_line error\n");
 			if ((new_line = parse_line(line)) != NULL)
@@ -93,6 +114,8 @@ int			main(int argc, char *argv[], char *envp[])
 
 	g_exit_status = 0;
 	parse_env(envp);
+	signal(SIGINT, (void *)sig_handler);
+	signal(SIGQUIT, (void *)sig_handler);
 	print_prompt();
 
 	return (g_exit_status);
