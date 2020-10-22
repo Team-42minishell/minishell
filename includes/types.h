@@ -77,7 +77,7 @@ typedef struct	s_table
 {
 	struct s_job		*job_list;
 	int					sep_type;
-	int					fd;
+	int					fd[3];
 	struct	s_table		*next;
 }				t_table;
 #endif

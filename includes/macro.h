@@ -38,7 +38,17 @@
 # define ENTER   	'F'
 # define SPACE		'S'
 /*
+**	meta characters pattern
+*/
+# define FRONT_REDIR		"G-*,SG-*,H-*,SH-*,L-*,SL-*,M-*,SM-*"
+# define FRONT_REDIR_BACK_X	"G-X,SG-X,H-X,SH-X,L-X,SL-X,M-X,SM-X"
+# define FRONT_EMP_REDIR	"EG-*,EH-*,EL-*,EM-*"
+# define FRONT_ALNUM		"N-*,C-*,SN-*,SC-*"
+# define BACK_REDIR			"*-G,*-SG,*-H,*-SH,*-L,*-SL,*-M,*-SM"
+# define NO_BACK_ARG		"*-X,*-SX,*-F,*-SF"
+# define BACK_X_GREAT		"*-G,*-H"
+/*
 ** error msg
 */
-# define LEXER_ERROR		"syntax error near unexpected token `"
+# define LEXER_ERROR		"syntax error near unexpected token"
 #endif
