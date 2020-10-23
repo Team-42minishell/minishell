@@ -122,7 +122,8 @@ int			process_line1(char *line)
 	first_table = table;
 	while (table)
 	{
-		
+		converter(table);
+		// printf("%s\n",table->job_list->command.cmd);
 		execute_table(table);
 		table = table->next;
 	}
@@ -137,17 +138,18 @@ void		display_prompt(void)
 
 int			main(int argc, char *argv[], char *envp[])
 {
+	char	*line;
 	// it's not good. but because of gcc option, argc and argv are used.
 	if (argc != 1)
 		argv[0] = NULL;
 
 	g_exit_status = 0;
 	parse_env(envp);
-	char	*line;
+	/*
 	signal(SIGINT, (void *)sig_handler);
 	signal(SIGQUIT, (void *)sig_handler);
 	print_prompt();
-
+	*/
 	while (TRUE)
 	{
 		display_prompt();

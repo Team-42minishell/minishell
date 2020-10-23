@@ -11,6 +11,8 @@ void	execute_command(t_command *command)
 		cmd_pwd();
 	else if (ft_strcmp(command->cmd, "cd") == 0)
 		cmd_cd(command);
+	else if (ft_strcmp(command->cmd, "echo") == 0)
+		cmd_echo(command);
 	else
 	{
 		ft_putstr("fail\n");
