@@ -10,6 +10,7 @@
 # include <string.h>
 # include <sys/param.h>
 # include <sys/stat.h>
+# include <sys/wait.h>
 # include "../libft/libft.h"
 # include "get_next_line.h"
 
