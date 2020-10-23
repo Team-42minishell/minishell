@@ -30,6 +30,8 @@ SRCS =	./src/main.c \
 		./src/parser.c \
 		./src/utils_get_parser.c \
 		./src/utils_set_parser.c \
+		./src/converter.c \
+		./src/utils_converter.c \
 		./src/execute.c \
 		./src/pwd.c \
 		./src/cd.c \
@@ -42,7 +44,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(MAKE) -C $(LIBFT)
-	$(CC) $(CFLAGS) $(INCS) -o $(NAME) $(OBJS) $(INCLIB)
+	$(CC) -g $(CFLAGS) $(INCS) -o $(NAME) $(OBJS) $(INCLIB)
 
 clean:
 	# $(MAKE) clean -C $(LIBFT)

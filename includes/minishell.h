@@ -121,6 +121,10 @@ void	set_redir_file(char **tokens, t_lexer *lexer, t_table *table);
 */
 void	execute_table(t_table	*table);
 /*
+**	converter
+*/
+void	converter(t_table *table);
+/*
 **	pwd
 */
 void		cmd_pwd(void);
@@ -134,9 +138,13 @@ void	cmd_cd(t_command *command);
 void	cmd_echo(t_command *cmd);
 
 /*
-**	utils.free
+**	utils_free.c
 */
 void	free_redir_list(t_redir *redir);
 void	free_job_list(t_job *job);
 void	free_tables(t_table *table);
+/*
+**	utils_converter.c
+*/
+int		open_handle(int *opened, char c);
 #endif
