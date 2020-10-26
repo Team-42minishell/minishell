@@ -15,10 +15,7 @@ char	type(char **tokens, int idx)
 	if (ft_strcmp(tokens[idx], "<") == 0)
 		return (LESS);
 	if (ft_strcmp(tokens[idx], " ") == 0)
-	{
-		printf("hello\n");
 		return (SPACE);
-	}
 	return (ft_strcmp(tokens[idx], "\n") == 0 ? ENTER : STRING);
 }
 
