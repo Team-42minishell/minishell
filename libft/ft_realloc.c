@@ -24,6 +24,7 @@ char	*ft_realloc(char **ptr, char c)
 		return (0);
 	ft_memcpy(ret, *ptr, size);
 	ret[size] = c;
+	//printf("size : %d string : %s\n", size, ret);
 	ft_free(*ptr);
 	*ptr = ret;
 	return (ret);

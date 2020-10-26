@@ -37,8 +37,6 @@ void		convert_env(char **ret, char *str, int *i, int first)
 		j--;
 	val = find_value(name);
 	*i = 0;
-	if (!val)
-		return ;
 	while (val && val[*i])
 		ft_realloc(ret, val[(*i)++]);
 	ft_free_str(&name);
