@@ -175,4 +175,11 @@ void			error_builtin(char *cmd, char *arg, char *msg);
 **	setting.c
 */
 void	set_res(int res);
+/*
+**	ft_is_format.c
+*/
+int		ft_is_format(char *str, char *format);
+int		check_char(char **str, char **format);
+int		check_string(char **str, char **format);
+void	handling_other(char **str, char **format);
 #endif

@@ -86,4 +86,7 @@ char				*ft_realloc(char **ptr, char c);
 int					ft_free(void *ptr);
 int					ft_is_space(int c);
 int					ft_is_number(char *str);
+int					ft_is_alpha(int c);
+int					ft_is_num(int c);
+int					ft_is_print(int c);
 #endif

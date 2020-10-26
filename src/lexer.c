@@ -14,8 +14,10 @@ char	type(char **tokens, int idx)
 		return (DGREATER);
 	if (ft_strcmp(tokens[idx], "<") == 0)
 		return (LESS);
-	if (ft_strcmp(tokens[idx], " ") == 0)
+	if (ft_is_format(tokens[idx], " +") == 0)
 		return (SPACE);
+	if (ft_is_format(tokens[idx], "d+") == 0)
+		return (NUMBER);	
 	return (ft_strcmp(tokens[idx], "\n") == 0 ? ENTER : STRING);
 }
 

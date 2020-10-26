@@ -37,6 +37,7 @@
 # define LESS       'L'
 # define STRING  	'C'
 # define ENTER   	'F'
+# define NUMBER		'N'
 # define SPACE		'S'
 /*
 **	meta characters pattern
