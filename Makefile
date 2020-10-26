@@ -22,6 +22,7 @@ SRCS =	./src/main.c \
 		./src/builtin_export2.c \
 		./src/builtin_unset.c \
 		./src/builtin_exit.c \
+		./src/exec_cmd_path_env.c \
 		./src/utils.c \
 		./src/utils_env.c \
 		./src/tokenizer.c \
@@ -37,7 +38,8 @@ SRCS =	./src/main.c \
 		./src/pwd.c \
 		./src/cd.c \
 		./src/echo.c \
-		./src/utils_free.c
+		./src/utils_free.c \
+    ./src/signal.c
 
 OBJS = $(SRCS:.c=.o)
 

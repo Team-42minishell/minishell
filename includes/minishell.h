@@ -9,6 +9,8 @@
 # include <signal.h>
 # include <string.h>
 # include <sys/param.h>
+# include <sys/stat.h>
+# include <sys/wait.h>
 # include "../libft/libft.h"
 # include "get_next_line.h"
 # include "types.h"
@@ -23,6 +25,7 @@ typedef	struct	s_env
 
 t_env			*g_env_list;
 int				g_exit_status;
+char			**g_envp;
 int				*g_pipes;
 int				g_res;
 int				g_maxfd;
@@ -147,4 +150,13 @@ void	free_tables(t_table *table);
 **	utils_converter.c
 */
 int		open_handle(int *opened, char c);
+/*
+**	exec_cmd_path_env.c
+*/
+void			exec_cmd_path_env(char *cmd);
+/*
+**	signal.c
+*/
+void			sig_handler(int signo);
+void			sig_execve_handler(int signo);
 #endif
