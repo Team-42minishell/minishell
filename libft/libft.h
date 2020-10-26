@@ -85,4 +85,5 @@ int					ft_strcmp(const char *s1, const char *s2);
 char				*ft_realloc(char **ptr, char c);
 int					ft_free(void *ptr);
 int					ft_is_space(int c);
+int					ft_is_number(char *str);
 #endif

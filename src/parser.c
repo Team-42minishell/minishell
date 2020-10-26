@@ -106,6 +106,7 @@ t_table		*parser (char **tokens)
 	while (tokens[lexer->idx])
 	{
 		lexer->type = type(tokens, lexer->idx);
+		// printf("string : %s // %d : %c\n", tokens[lexer->idx], lexer->type, lexer->type);
 		parse(tokens, lexer, parser, table);
 		lexer->idx++;
 	}

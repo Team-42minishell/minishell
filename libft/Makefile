@@ -69,7 +69,8 @@ SRCS =	ft_isalpha.c \
 		ft_strcmp.c \
 		ft_free.c \
 		ft_realloc.c \
-		ft_is_space.c
+		ft_is_space.c \
+		ft_is_number.c
 NAME = libft.a
 OBJS = ${SRCS:.c=.o}
 HEAD = libft.h

@@ -163,4 +163,16 @@ void			exec_cmd_path_env(char *cmd);
 */
 void			sig_handler(int signo);
 void			sig_execve_handler(int signo);
+/*
+**	exit.c
+*/
+void	cmd_exit(t_command *command);
+/*
+**	error.c
+*/
+void			error_builtin(char *cmd, char *arg, char *msg);
+/*
+**	setting.c
+*/
+void	set_res(int res);
 #endif
