@@ -139,6 +139,10 @@ void	cmd_cd(t_command *command);
 **	echo
 */
 void	cmd_echo(t_command *cmd);
+/*
+**	env
+*/
+void	cmd_env(void);
 
 /*
 **	utils_free.c
