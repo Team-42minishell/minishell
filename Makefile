@@ -4,6 +4,7 @@ INCS = -I./includes
 CC = gcc
 RM = rm -f
 # CFLAGS = -g -Wall -Wextra -Werror $(INCS)
+CFLAGS = -g $(INCS)
 INCLIB = -Llibft -lft
 
 LIBFT = ./libft
@@ -43,14 +44,14 @@ OBJS = $(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(MAKE) -C $(LIBFT)
-	$(CC) -g $(CFLAGS) $(INCS) -o $(NAME) $(OBJS) $(INCLIB)
+	# $(MAKE) -C $(LIBFT)
+	$(CC) $(CFLAGS) $(INCS) -o $(NAME) $(OBJS) $(INCLIB)
 
 clean:
 	# $(MAKE) clean -C $(LIBFT)
 
 fclean: clean
-	# $(MAKE) fclean -C $(LIBFT)
+	#$(MAKE) fclean -C $(LIBFT)
 	rm -rf $(OBJS)
 	rm -rf $(NAME)
 

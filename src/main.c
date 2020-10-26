@@ -123,7 +123,7 @@ int			process_line1(char *line)
 	while (table)
 	{
 		converter(table);
-		// printf("%s\n",table->job_list->command.cmd);
+		//printf("%s\n",table->job_list->command.cmd);
 		execute_table(table);
 		table = table->next;
 	}

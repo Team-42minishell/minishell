@@ -32,14 +32,41 @@ t_bool	check_seq(char **tokens, t_lexer *lex)
 		while (lex->format[i][++j])
 		{
 			c = lex->format[i][j];
+			//printf("formats : %s format : %c\n", lex->format[i], lex->format[i][j]);
 			if (lex->res == TRUE || lex->res == FALSE)
 				break;
 			if ((i == 0 && (lex->idx - j - 1) < 0)
 			||	(i == 1 && (lex->idx + j + 1) >= lex->len))
+			{
+				/*
+				printf("hello x\n");
+				if (i == 0 && (lex->idx - j - 1) < 0)
+				{
+					printf("char : %c, index : %d\n", c, lex->idx - j - 1);
+				}
+				else if (i == 1 && (lex->idx + j + 1) >= lex->len)
+				{
+					printf("char : %c, index: %d\n", c, lex->idx + j + 1);
+				}
+				*/
 				lex->res = (c == 'X') ? TRUE : FALSE;
+			}
 			else if ((i == 0 && c != type(tokens, lex->idx - j -1 ))
 			||	(i == 1 && c != type(tokens, lex->idx + j + 1)))
+			{
+				/*
+				printf("hello w\n");
+				if (i == 0)
+				{
+					printf("char : %c first : %d\n", c, lex->idx - j - 1);
+				}
+				else if (i == 1 && (lex->idx + j + 1) >= lex->len)
+				{
+					printf("char : %c, first : %d\n", c, lex->idx + j + 1);
+				}
+				*/
 				lex->res = (!ft_is_set(c, "W*")) ? FALSE : -1;
+			}
 		}
 		if (lex -> res == FALSE)
 			break;
@@ -97,7 +124,7 @@ t_bool	is_valid_token(char **tokens, t_lexer *lex)
 int		lexer(char **tokens)
 {
 	t_lexer		*lex;
-	char		*errror_tokens;
+	char		*error_tokens;
 
 	if (!tokens || !(lex = ft_calloc(sizeof(t_lexer), 1)))
 		return (0);
@@ -109,9 +136,9 @@ int		lexer(char **tokens)
 		if (!is_valid_token(tokens, lex))
 		{
 			if (!ft_strcmp(tokens[lex->idx], "\n"))
-				errror_tokens = "new_line";
+				error_tokens = "new_line";
 			else
-				errror_tokens = tokens[lex->idx];
+				error_tokens = tokens[lex->idx];
 			printf("error_token : %s\n", tokens[lex->idx]);
 			free(lex);
 			return (FALSE);
