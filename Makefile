@@ -38,8 +38,9 @@ SRCS =	./src/main.c \
 		./src/pwd.c \
 		./src/cd.c \
 		./src/echo.c \
+		./src/env.c \
 		./src/utils_free.c \
-    ./src/signal.c
+		./src/signal.c
 
 OBJS = $(SRCS:.c=.o)
 
