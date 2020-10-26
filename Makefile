@@ -3,7 +3,8 @@ NAME = minishell
 INCS = -I./includes
 CC = gcc
 RM = rm -f
-CFLAGS = -g -Wall -Wextra -Werror $(INCS)
+# CFLAGS = -g -Wall -Wextra -Werror $(INCS)
+CFLAGS = -g $(INCS)
 INCLIB = -Llibft -lft
 
 LIBFT = ./libft
@@ -24,21 +25,35 @@ SRCS =	./src/main.c \
 		./src/exec_cmd_path_env.c \
 		./src/utils.c \
 		./src/utils_env.c \
-		./src/signal.c
+		./src/tokenizer.c \
+		./src/utils_memory.c \
+		./src/lexer.c \
+		./src/utils_string.c \
+		./src/parser.c \
+		./src/utils_get_parser.c \
+		./src/utils_set_parser.c \
+		./src/converter.c \
+		./src/utils_converter.c \
+		./src/execute.c \
+		./src/pwd.c \
+		./src/cd.c \
+		./src/echo.c \
+		./src/utils_free.c \
+    ./src/signal.c
 
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(MAKE) -C $(LIBFT)
+	# $(MAKE) -C $(LIBFT)
 	$(CC) $(CFLAGS) $(INCS) -o $(NAME) $(OBJS) $(INCLIB)
 
 clean:
 	# $(MAKE) clean -C $(LIBFT)
 
 fclean: clean
-	# $(MAKE) fclean -C $(LIBFT)
+	#$(MAKE) fclean -C $(LIBFT)
 	rm -rf $(OBJS)
 	rm -rf $(NAME)
 

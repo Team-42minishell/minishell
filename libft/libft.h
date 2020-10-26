@@ -6,7 +6,7 @@
 /*   By: sungslee <sungslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 19:21:29 by sungslee          #+#    #+#             */
-/*   Updated: 2020/08/08 20:30:52 by sungslee         ###   ########.fr       */
+/*   Updated: 2020/10/19 15:25:21 by sungslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,8 @@ int					ft_is_set(char c, char *set);
 char				*ft_atouni(wchar_t w);
 size_t				ft_strlcat(char *dest, const char *src, size_t size);
 size_t				ft_strlcpy(char *dest, const char *src, size_t size);
+int					ft_strcmp(const char *s1, const char *s2);
+char				*ft_realloc(char **ptr, char c);
+int					ft_free(void *ptr);
+int					ft_is_space(int c);
 #endif

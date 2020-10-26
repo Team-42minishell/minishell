@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_realloc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sungslee <sungslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/08 20:01:49 by sungslee          #+#    #+#             */
-/*   Updated: 2020/10/19 16:59:23 by sungslee         ###   ########.fr       */
+/*   Created: 2020/10/19 10:56:44 by sungslee          #+#    #+#             */
+/*   Updated: 2020/10/19 15:26:13 by sungslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-char		*ft_strdup(const char *s)
+#include <stdio.h>
+char	*ft_realloc(char **ptr, char c)
 {
-	char	*ptr;
-	size_t	idx;
+	char	*ret;
+	int		size;
 
-	ptr = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
-	if (ptr == NULL)
-		return (NULL);
-	idx = -1;
-	while (s[++idx])
-		ptr[idx] = s[idx];
-	ptr[idx] = '\0';
-	return (ptr);
+	if (!ptr)
+		return (0);
+	size = ft_strlen(*ptr);
+	if (!(ret = (char *)ft_calloc(sizeof(char), size + 2)))
+		return (0);
+	ft_memcpy(ret, *ptr, size);
+	ret[size] = c;
+	ft_free(*ptr);
+	*ptr = ret;
+	return (ret);
 }
+
