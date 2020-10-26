@@ -90,14 +90,6 @@ static void	print_error_msg(char *cmd, char *msg, int exit_status,
 		free(*full_cmd);
 }
 
-void		sig_execve_handler(int signo)
-{
-	if (signo == SIGINT)
-		ft_putstr("\b\bSIGINT\n");
-	else if (signo == SIGQUIT)
-		ft_putstr("\b\bSIGQUIT\n");
-}
-
 void		run_another_program(char **full_cmd)
 {
 	pid_t	pid;
@@ -115,7 +107,7 @@ void		run_another_program(char **full_cmd)
 	else if (pid > 0)
 	{
 		ret = waitpid(pid, &status, WUNTRACED);
-		set_exit_status(0);
+		set_exit_status(WEXITSTATUS(status));
 	}
 	else
 	{

@@ -75,4 +75,9 @@ void			builtin_export(char *line);
 **	exec_cmd_path_env.c
 */
 void			exec_cmd_path_env(char *cmd);
+/*
+**	signal.c
+*/
+void			sig_handler(int signo);
+void			sig_execve_handler(int signo);
 #endif

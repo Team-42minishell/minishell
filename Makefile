@@ -23,7 +23,8 @@ SRCS =	./src/main.c \
 		./src/builtin_exit.c \
 		./src/exec_cmd_path_env.c \
 		./src/utils.c \
-		./src/utils_env.c
+		./src/utils_env.c \
+		./src/signal.c
 
 OBJS = $(SRCS:.c=.o)
 
