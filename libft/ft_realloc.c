@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-
+#include <stdio.h>
 char	*ft_realloc(char **ptr, char c)
 {
 	char	*ret;
@@ -28,3 +28,4 @@ char	*ft_realloc(char **ptr, char c)
 	*ptr = ret;
 	return (ret);
 }
+

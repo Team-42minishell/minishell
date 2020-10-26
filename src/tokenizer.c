@@ -56,7 +56,7 @@ int				get_start(char *line, t_tokenizer *tool)
 	i = tool->idx;
 	if (!line || !line[i] || tool->quote)
 		return (FALSE);
-	if ((tool->quote = get_quote(line, i)) > 0)
+	if ((tool->quote = get_quote(line, i)))
 		tool->qidx = i;
 	if (line[i] == '\n')
 		return (TRUE);

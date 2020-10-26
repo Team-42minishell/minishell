@@ -17,13 +17,34 @@
 */
 
 #include "libft.h"
+#include "stdio.h"
 
 int		ft_strlen(const char *s)
 {
 	int		len;
 
+	if (!s)
+	{
+		//printf("%d %c\n", *s, *s);
+		return (0);
+	}
 	len = 0;
-	while (*s++)
+	while (*s++){
 		len++;
+	}
 	return (len);
 }
+
+/*
+int		ft_strlen(const char *str)
+{
+	int		cnt;
+
+	if (!str)
+		return (0);
+	cnt = 0;
+	while (str[cnt] != '\0')
+		cnt++;
+	return (cnt);
+}
+*/
