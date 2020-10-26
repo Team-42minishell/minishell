@@ -40,7 +40,10 @@ SRCS =	./src/main.c \
 		./src/echo.c \
 		./src/env.c \
 		./src/utils_free.c \
-		./src/signal.c
+		./src/signal.c \
+		./src/exit.c \
+		./src/error.c \
+		./src/setting.c
 
 OBJS = $(SRCS:.c=.o)
 

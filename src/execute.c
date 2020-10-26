@@ -15,6 +15,8 @@ void	execute_command(t_command *command)
 		cmd_echo(command);
 	else if (ft_strcmp(command->cmd, "env") == 0)
 		cmd_env();
+	else if (ft_strcmp(command->cmd, "exit") == 0)
+		cmd_exit(command);
 	else
 	{
 		ft_putstr("fail\n");
@@ -49,8 +51,9 @@ void	execute_table(t_table	*table)
 	g_maxfd = 2;
 	if (!table || !table->job_list || !table->job_list->command.cmd)
 		return ;
+	if (table->sep_type == SEMI || table->sep_type == NONE)
+		execute_job(table, table->job_list);
+
 	//save_standart_fd(table);
-	//g_pipes = make_pipes(table->job_list);
-	//if (table->sep_type == SEMI)
-	execute_job(table, table->job_list);
+	//g_pipes = make_pipes(table->job_list);;
 }

@@ -18,6 +18,7 @@
 */
 # define TRUE   1
 # define FALSE  0
+# define NONE	0
 
 /*
 **  fd
@@ -50,5 +51,16 @@
 /*
 ** error msg
 */
-# define LEXER_ERROR		"syntax error near unexpected token"
+# define NOT_PRINT_ASCII	"Failed print ascii art"
+# define LEXER_ERROR		"syntax error near unexpected token `"
+# define REDIR_AMBIGOUS		"ambiguous redirect"
+# define NO_SUCH_ENTRY		"No such file or directory"
+# define PERMISSION_DENIED	"permission denied"
+# define FORK_FAILED		"Fork failed for new process"
+# define NOT_CMD_FOUND		"command not found"
+# define EXECUTE_DRECTORY	"is a directory"
+# define TOO_MANY_ARG		": too many arguments"
+# define FAIL_TO_GET_PATH	": Faild to get path, check 'PWD_BUFFER_SIZE'"
+# define NUMERIC_REQUIRED	": numeric argument required"
+# define INVALID_IDENTIFIER	"\': not a valid identifier"
 #endif
