@@ -14,9 +14,9 @@ char	type(char **tokens, int idx)
 		return (DGREATER);
 	if (ft_strcmp(tokens[idx], "<") == 0)
 		return (LESS);
-	if (ft_is_format(tokens[idx], " +") == 0)
+	if (ft_is_format(tokens[idx], " +"))
 		return (SPACE);
-	if (ft_is_format(tokens[idx], "d+") == 0)
+	if (ft_is_format(tokens[idx], "d+"))
 		return (NUMBER);	
 	return (ft_strcmp(tokens[idx], "\n") == 0 ? ENTER : STRING);
 }
@@ -134,7 +134,7 @@ int		lexer(char **tokens)
 	while (tokens[lex->idx])
 	{
 		lex->type = type(tokens, lex->idx);
-		// printf("lexer : %s %c\n", tokens[lex->idx], lex->type);
+		//printf("lexer : %s %c\n", tokens[lex->idx], lex->type);
 		if (!is_valid_token(tokens, lex))
 		{
 			if (!ft_strcmp(tokens[lex->idx], "\n"))
