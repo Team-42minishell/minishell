@@ -43,7 +43,8 @@ SRCS =	./src/main.c \
 		./src/signal.c \
 		./src/exit.c \
 		./src/error.c \
-		./src/setting.c
+		./src/setting.c \
+		./src/ft_is_format.c
 
 OBJS = $(SRCS:.c=.o)
 

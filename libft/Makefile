@@ -70,7 +70,10 @@ SRCS =	ft_isalpha.c \
 		ft_free.c \
 		ft_realloc.c \
 		ft_is_space.c \
-		ft_is_number.c
+		ft_is_number.c \
+		ft_is_num.c \
+		ft_is_print.c \
+		ft_is_alpha.c
 NAME = libft.a
 OBJS = ${SRCS:.c=.o}
 HEAD = libft.h

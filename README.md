@@ -23,3 +23,5 @@ done
 - git branch -d [브랜치명]
 브랜치 원격 삭제
 - git push origin :[브랜치명]
+git graph
+git log --decorate --oneline --graph -10
