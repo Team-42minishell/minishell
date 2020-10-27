@@ -15,6 +15,8 @@ void	execute_command(t_command *command)
 		cmd_echo(command);
 	else if (ft_strcmp(command->cmd, "env") == 0)
 		cmd_env();
+	else if (ft_strcmp(command->cmd, "export") == 0)
+		cmd_export(command);
 	else if (ft_strcmp(command->cmd, "exit") == 0)
 		cmd_exit(command);
 	else
