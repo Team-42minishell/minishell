@@ -6,7 +6,7 @@
 #    By: sungslee <sungslee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/08 20:19:19 by sungslee          #+#    #+#              #
-#    Updated: 2020/10/27 20:05:35 by yshin            ###   ########.fr        #
+#    Updated: 2020/10/27 20:45:59 by yshin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,6 +79,7 @@ SRCS =	ft_isalpha.c \
 		ft_len_doublestr.c \
 		ft_startswith.c \
 		ft_realloc_doublestr.c \
+		ft_remove_doublestr.c \
 		ft_free_doublestr.c \
 		ft_free_str.c
 NAME = libft.a

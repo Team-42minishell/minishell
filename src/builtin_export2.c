@@ -127,7 +127,9 @@ void	builtin_export(char *line)
 		return ;
 	}
 	idx = 0;
+	/*
 	while (arg_list[++idx])
 		set_env(arg_list[idx]);
 	free_double_pointer(arg_list);
+	*/
 }

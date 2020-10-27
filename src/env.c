@@ -50,7 +50,7 @@ void	cmd_env(void)
 {
 	int	idx;
 
-	set_exit_status(0);
+	set_res(0);
 	idx = -1;
 	while (g_envp[++idx])
 	{

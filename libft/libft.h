@@ -6,7 +6,7 @@
 /*   By: sungslee <sungslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 19:21:29 by sungslee          #+#    #+#             */
-/*   Updated: 2020/10/27 20:05:49 by yshin            ###   ########.fr       */
+/*   Updated: 2020/10/27 20:46:18 by yshin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,4 +96,5 @@ int					ft_startswith(const char *str, const char *sub);
 char				**ft_realloc_doublestr(char ***strs_ref, char *item);
 int					ft_free_doublestr(char ***doublestr_addr);
 int					ft_free_str(char **str);
+char				**ft_remove_doublestr(char **str, int idx);
 #endif
