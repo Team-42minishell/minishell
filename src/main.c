@@ -60,39 +60,6 @@ int			print_prompt()
 	return (1);
 }
 
-/*
-** parse_env: parse enviorment variables and define key and value to g_env_list.
-*/
-
-void		parse_env(char *envp[])
-{
-	char	**env_list;
-	int		idx;
-
-	idx = two_ptr_size(envp);
-	if (!(g_env_list = (t_env*)malloc(sizeof(t_env) * (idx + 2))))
-	{
-		ft_putstr_fd("error: can't allocate.\n", 2);
-		exit(1);
-	}
-	idx = -1;
-	while (envp[++idx])
-	{
-		if (!(env_list = ft_split(envp[idx], '=')))
-		{
-			ft_putstr_fd("error: can't allocate.\n", 2);
-			exit(1);
-		}
-		g_env_list[idx].key = ft_strdup(env_list[0]);
-		g_env_list[idx].value = env_list[1] == NULL ? "" : ft_strdup(env_list[1]);
-		free_double_pointer(env_list);
-	}
-	g_env_list[idx].key = ft_strdup("OLDPWD");
-	g_env_list[idx].value = NULL;
-	g_env_list[idx + 1].key = NULL;
-	g_env_list[idx + 1].value = NULL;
-}	
-
 int			process_line1(char *line)
 {
 	char	**tokens;
@@ -129,8 +96,7 @@ int			main(int argc, char **argv, char **envp)
 		argv[0] = NULL;
 
 	g_exit_status = 0;
-	g_envp = envp;
-	parse_env(envp);
+	g_envp = (char **)ft_dup_doublestr(envp);
 	/*
 	signal(SIGINT, (void *)sig_handler);
 	signal(SIGQUIT, (void *)sig_handler);

@@ -6,7 +6,7 @@
 #    By: sungslee <sungslee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/08 20:19:19 by sungslee          #+#    #+#              #
-#    Updated: 2020/10/19 15:25:10 by sungslee         ###   ########.fr        #
+#    Updated: 2020/10/27 20:05:35 by yshin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,7 +73,14 @@ SRCS =	ft_isalpha.c \
 		ft_is_number.c \
 		ft_is_num.c \
 		ft_is_print.c \
-		ft_is_alpha.c
+		ft_is_alpha.c \
+		ft_sort_doublestr.c \
+		ft_dup_doublestr.c \
+		ft_len_doublestr.c \
+		ft_startswith.c \
+		ft_realloc_doublestr.c \
+		ft_free_doublestr.c \
+		ft_free_str.c
 NAME = libft.a
 OBJS = ${SRCS:.c=.o}
 HEAD = libft.h

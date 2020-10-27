@@ -39,6 +39,7 @@ SRCS =	./src/main.c \
 		./src/cd.c \
 		./src/echo.c \
 		./src/env.c \
+		./src/export.c \
 		./src/utils_free.c \
 		./src/signal.c \
 		./src/exit.c \

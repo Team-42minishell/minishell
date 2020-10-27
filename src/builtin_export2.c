@@ -77,6 +77,7 @@ void	make_new_env_list(char **key, char **value, int num_envs)
 ** set_env: this func sets environment with arg by parsing key and value.
 */
 
+/*
 void	set_env(char *arg)
 {
 	int		parsing_idx;
@@ -98,6 +99,7 @@ void	set_env(char *arg)
 		return ;
 	make_new_env_list(&key, &value, num_envs);
 }
+*/
 
 /*
 ** builtin_export: set env or print the list of env.

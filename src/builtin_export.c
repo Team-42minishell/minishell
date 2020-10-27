@@ -24,7 +24,7 @@ int		does_exist_env_oldpwd(void)
 ** without value. Like this, "declare -x OLDPWD".
 */
 
-void	print_env_list(void)
+/*void	print_env_list(void)
 {
 	int		idx;
 
@@ -46,29 +46,7 @@ void	print_env_list(void)
 		ft_putstr_fd("\"\n", 1);
 	}
 }
-
-/*
-** get_parsing_idx: find index where '=' is.
-** if '=' is at index 0, that means there is no key and occurs an error.
 */
-
-int		get_parsing_idx(char *arg)
-{
-	int		idx;
-
-	idx = -1;
-	while (arg[++idx])
-		if (arg[idx] == '=')
-			break ;
-	if (idx == 0)
-	{
-		ft_putstr_fd("error: export: '", 2);
-		ft_putstr_fd(arg, 2);
-		ft_putstr_fd("': not a valid identifier\n", 2);
-		return (-1);
-	}
-	return (idx);
-}
 
 /*
 ** convert_empty_string_to_null: this function convert "" into NULL.

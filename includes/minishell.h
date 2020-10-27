@@ -76,7 +76,6 @@ void			convert_empty_string_to_null(char **value);
 int				does_exist_same_env(char **key, char **value, int num_envs);
 void			set_env_list_last_data(char *key, char *value, int idx);
 void			make_new_env_list(char **key, char **value, int num_envs);
-void			set_env(char *arg);
 void			builtin_export(char *line);
 
 /*
@@ -142,7 +141,13 @@ void	cmd_echo(t_command *cmd);
 /*
 **	env
 */
+int		get_key_idx(char *key);
+int		set_env(char *key, char *val);
 void	cmd_env(void);
+/*
+**	export
+*/
+void	cmd_export(t_command *cmd);
 
 /*
 **	utils_free.c
