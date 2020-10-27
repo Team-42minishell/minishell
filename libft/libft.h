@@ -6,7 +6,7 @@
 /*   By: sungslee <sungslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 19:21:29 by sungslee          #+#    #+#             */
-/*   Updated: 2020/10/19 15:25:21 by sungslee         ###   ########.fr       */
+/*   Updated: 2020/10/27 20:05:49 by yshin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,4 +89,11 @@ int					ft_is_number(char *str);
 int					ft_is_alpha(int c);
 int					ft_is_num(int c);
 int					ft_is_print(int c);
+char				**ft_dup_doublestr(char **str);
+void				ft_sort_doublestr(char **strs, int left, int right);
+int					ft_len_doublestr(char **str);
+int					ft_startswith(const char *str, const char *sub);
+char				**ft_realloc_doublestr(char ***strs_ref, char *item);
+int					ft_free_doublestr(char ***doublestr_addr);
+int					ft_free_str(char **str);
 #endif
