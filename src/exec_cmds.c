@@ -25,7 +25,7 @@ int		exec_buitlin(char *line)
 		builtin_exit(line);
 	else
 	{
-		exec_cmd_path_env(line)	;
+		//exec_cmd_path_env(line)	;
 		return (0);
 	}
 	//else if (ft_strncmp(line, "echo", 4) == 0)
