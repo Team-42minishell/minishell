@@ -97,11 +97,9 @@ int			main(int argc, char **argv, char **envp)
 
 	g_exit_status = 0;
 	g_envp = (char **)ft_dup_doublestr(envp);
-	/*
 	signal(SIGINT, (void *)sig_handler);
 	signal(SIGQUIT, (void *)sig_handler);
-	print_prompt();
-	*/
+	//print_prompt();
 	while (TRUE)
 	{
 		display_prompt();
