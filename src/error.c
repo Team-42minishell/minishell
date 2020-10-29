@@ -17,8 +17,7 @@ void	error_builtin(char *cmd, char *arg, char *msg)
 	int		error_num;
 
 	error_num = errno;
-	// ft_putstr_fd();
-	// ft_putstr_fd();
+	ft_putstr_fd(cmd, 2);
 	if (ft_strcmp(cmd, "unset") == 0 || ft_strcmp(cmd, "export") == 0)
 		ft_putstr_fd(": '", 2);
 	else

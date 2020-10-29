@@ -23,8 +23,7 @@ void	cmd_cd(t_command *command)
 	}
 	if (chdir(command->arg_list[0]) == -1)
 	{
-		ft_putstr_fd(command->arg_list[0], 1);
-		ft_putstr_fd("fail cd\n", 1);
+		error_builtin("cd", command->arg_list[0], "");
 		return ;
 	}
 }
