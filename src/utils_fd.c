@@ -34,7 +34,7 @@ void	save_standard_fd(t_table *table)
 	table->fd[2] = dup(2);
 }
 
-void	restore_standart_fd(t_table *table)
+void	restore_standard_fd(t_table *table)
 {
 	dup2(table->fd[0], 0);
 	dup2(table->fd[1], 1);
@@ -48,5 +48,5 @@ void	close_fd_and_pipes(void)
 {
 	while (g_maxfd > 2)
 		close(g_maxfd--);
-	//ft_free_intptr(&g_pipes);
+	free(g_pipes);
 }

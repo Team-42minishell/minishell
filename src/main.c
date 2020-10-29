@@ -96,7 +96,8 @@ int			main(int argc, char **argv, char **envp)
 	if (argc != 1)
 		argv[0] = NULL;
 
-	g_exit_status = 0;
+	g_res = 0;
+	g_maxfd = 2;
 	g_envp = (char **)ft_dup_doublestr(envp);
 	signal(SIGINT, (void *)sig_handler);
 	signal(SIGQUIT, (void *)sig_handler);
@@ -111,5 +112,5 @@ int			main(int argc, char **argv, char **envp)
 		//printf("%d", ft_strlen(line));
 		process_line1(new_line);
 	}
-	return (g_exit_status);
+	return (g_res);
 }

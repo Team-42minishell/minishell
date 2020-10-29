@@ -204,6 +204,11 @@ void	handling_other(char **str, char **format);
 int		get_fd(t_redir *redir);
 void	save_standard_fd(t_table *table);
 void	redirect_stdout_fd(t_table *table);
-void	restore_standart_fd(t_table *table);
+void	restore_standard_fd(t_table *table);
 void	close_fd_and_pipes(void);
+/*
+**	utils_pipe.c
+*/
+int		*make_pipes(t_job *job);
+void	dup_pipe(t_job *job, int idx);
 #endif
