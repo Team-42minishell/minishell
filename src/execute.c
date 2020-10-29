@@ -46,19 +46,19 @@ void	execute_command(t_command *command)
 
 void	execute_job(t_table *table, t_job *job)
 {
-	int	p_id;
+	int	p_idx;
 
-	p_id = 0;
+	p_idx = 0;
 	while (job)
 	{
-		// dup_pipe(job, p_id);
+		dup_pipe(job, p_idx);
 		if (!execute_redirection(table, job))
 		{
 			job = job->next;
 			continue;
 		}
 		execute_command(&job->command);
-		p_id++;
+		p_idx++;
 		job = job->next;
 	}
 	return ;
@@ -72,11 +72,11 @@ void	execute_table(t_table	*table)
 	if (!table || !table->job_list || !table->job_list->command.cmd)
 		return ;
 	save_standard_fd(table);
+	g_pipes = make_pipes(table->job_list);
 	if (table->sep_type == SEMI || table->sep_type == NONE)
 		execute_job(table, table->job_list);
 	while (wait(&status) > 0)
 		g_res = WEXITSTATUS(status);
-	restore_standart_fd(table);
+	restore_standard_fd(table);
 	close_fd_and_pipes();
-	//g_pipes = make_pipes(table->job_list);;
 }

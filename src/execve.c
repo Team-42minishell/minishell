@@ -120,20 +120,19 @@ void		run_another_program(char **full_cmd, t_command *cmd)
 	signal(SIGQUIT, (void *)sig_execve_handler);
 	if (pid == 0)
 	{
+		if (cmd->idx != 0)
+			close(g_pipes[cmd->idx * 2 - 1]);
 		set_exe_argv(*full_cmd, cmd->arg_list, &exe_argv);
 		execve(*full_cmd, exe_argv, g_envp);
 		ft_free_doublestr(&exe_argv);
 	}
-	else if (pid > 0)
-	{
-		ret = waitpid(pid, &status, WUNTRACED);
-		set_res(WEXITSTATUS(status));
-	}
-	else
+	else if (pid < 0)
 	{
 		ft_putstr_fd("error: fork fails.\n", 2);
 		set_res(1);
 	}
+	if (cmd->idx != 0)
+		close(g_pipes[cmd->idx * 2 - 1]);
 	free(*full_cmd);
 }
 

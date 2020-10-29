@@ -2,7 +2,7 @@
 
 void	cmd_exit(t_command *command)
 {
-	//close_fd_and_pipe();
+	close_fd_and_pipes();
 	ft_putendl_fd("exit", 1);
 	set_res(0);
 	if (command->arg_list)
