@@ -91,6 +91,7 @@ void		display_prompt(void)
 int			main(int argc, char **argv, char **envp)
 {
 	char	*line;
+	char	*new_line;
 	// it's not good. but because of gcc option, argc and argv are used.
 	if (argc != 1)
 		argv[0] = NULL;
@@ -105,8 +106,10 @@ int			main(int argc, char **argv, char **envp)
 		display_prompt();
 		if (!get_next_line(0, &line))
 			break;
+		new_line = ft_strjoin(line, "\n");
+		free(line);
 		//printf("%d", ft_strlen(line));
-		process_line1(line);
+		process_line1(new_line);
 	}
 	return (g_exit_status);
 }

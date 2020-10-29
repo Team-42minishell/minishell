@@ -23,8 +23,11 @@
 /*
 **  fd
 */
-# define STDIN  0
-# define STDOUT 1
+# define STDIN		0
+# define STDOUT		1
+# define STDNRM		0
+# define FDERR		-1
+# define REDIRAMB	-2
 
 /*
 **  meta character
@@ -52,6 +55,7 @@
 /*
 ** error msg
 */
+# define SHELL				"catshell : "
 # define NOT_PRINT_ASCII	"Failed print ascii art"
 # define LEXER_ERROR		"syntax error near unexpected token `"
 # define REDIR_AMBIGOUS		"ambiguous redirect"

@@ -26,7 +26,7 @@ t_bool	check_seq(char **tokens, t_lexer *lex)
 	int		i;
 	int		j;
 	char	c;
-	
+
 	i = -1;
 	while (++i < 2)
 	{
@@ -34,46 +34,27 @@ t_bool	check_seq(char **tokens, t_lexer *lex)
 		while (lex->format[i][++j])
 		{
 			c = lex->format[i][j];
-			//printf("formats : %s format : %c\n", lex->format[i], lex->format[i][j]);
+			//printf("lex->format : %c\n", c);
 			if (lex->res == TRUE || lex->res == FALSE)
-				break;
-			if ((i == 0 && (lex->idx - j - 1) < 0)
-			||	(i == 1 && (lex->idx + j + 1) >= lex->len))
+				break ;
+			if ((i == 0 && (lex->idx - j - 1) < 0) \
+			|| (i == 1 && (lex->idx + j + 1) >= lex->len))
 			{
-				/*
-				printf("hello x\n");
-				if (i == 0 && (lex->idx - j - 1) < 0)
-				{
-					printf("char : %c, index : %d\n", c, lex->idx - j - 1);
-				}
-				else if (i == 1 && (lex->idx + j + 1) >= lex->len)
-				{
-					printf("char : %c, index: %d\n", c, lex->idx + j + 1);
-				}
-				*/
+				//printf("%d // %d\n", (lex->idx - j - 1), (lex->idx + j + 1));
 				lex->res = (c == 'X') ? TRUE : FALSE;
 			}
-			else if ((i == 0 && c != type(tokens, lex->idx - j -1 ))
-			||	(i == 1 && c != type(tokens, lex->idx + j + 1)))
+			else if ((i == 0 && c != type(tokens, lex->idx - j - 1)) \
+			|| (i == 1 && c != type(tokens, lex->idx + j + 1)))
 			{
-				/*
-				printf("hello w\n");
-				if (i == 0)
-				{
-					printf("char : %c first : %d\n", c, lex->idx - j - 1);
-				}
-				else if (i == 1 && (lex->idx + j + 1) >= lex->len)
-				{
-					printf("char : %c, first : %d\n", c, lex->idx + j + 1);
-				}
-				*/
+				//printf("%d // %d\n", (lex->idx - j - 1), (lex->idx + j + 1));
 				lex->res = (!ft_is_set(c, "W*")) ? FALSE : -1;
 			}
 		}
-		if (lex -> res == FALSE)
-			break;
+		if (lex->res == FALSE)
+			break ;
 	}
-	free_double_pointer(lex->format);
+	ft_free_doublestr(&lex->format);
+	//printf("end\n");
 	return (lex->res != FALSE);
 }
 /*
@@ -90,8 +71,8 @@ int		token_in(char **tokens, t_lexer *lex, char *format)
 		lex->res = -1;
 		if (check_seq(tokens, lex))
 		{
-			free_double_pointer(lex->seqs);
-			return 1;
+			//printf("redir : %d, %s\n", lex->idx, tokens[lex->idx]);
+			return (ft_free_doublestr(&lex->seqs));
 		}
 		lex->j++;
 	}

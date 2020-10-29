@@ -61,12 +61,14 @@ void		create_redir(char **tokens, t_lexer *lexer, t_parser *parser, t_table *tab
 		last_job->redir_list = new_redir;
 		return ;
 	}
+	printf("redir 4\n");
 	last_redir->next = new_redir;
 	return ;
 }
 
 void		parse(char **tokens, t_lexer *lexer, t_parser *parser, t_table *table)
 {
+	//printf("lexer->idx : %d // tokens : %s // lexer->type : %c\n", lexer->idx, tokens[lexer->idx], lexer->type);
 	if (ft_is_set(lexer->type, "SF"))
 		return ;
 	if (ft_is_set(lexer->type, "Y") && !token_in(tokens, lexer, NO_BACK_ARG))
@@ -74,13 +76,19 @@ void		parse(char **tokens, t_lexer *lexer, t_parser *parser, t_table *table)
 	else if (ft_is_set(lexer->type, "P"))
 		create_job(parser, table);
 	else if (ft_is_set(lexer->type, "GHL"))
+	{
 		create_redir(tokens, lexer, parser, table);
+	}
 	else if (ft_is_set(lexer->type, "NC"))
 	{
+		// printf("lexer->idx : %d // tokens : %s // lexer->type : %c\n", lexer->idx, tokens[lexer->idx], lexer->type);
 		if (lexer->type == 'N' && token_in(tokens, lexer, BACK_X_GREAT))
 			parser->fd = TRUE;
 		else if (token_in(tokens, lexer, FRONT_REDIR))
+		{
+			// printf("hello\n");
 			set_redir_file(tokens, lexer, table);
+		}
 		else if (parser->command)
 			set_command_arg(tokens, lexer, table);
 		else
@@ -106,7 +114,7 @@ t_table		*parser (char **tokens)
 	while (tokens[lexer->idx])
 	{
 		lexer->type = type(tokens, lexer->idx);
-		// printf("string : %s // %d : %c\n", tokens[lexer->idx], lexer->type, lexer->type);
+		//printf("string : %s // %d : %c\n", tokens[lexer->idx], lexer->type, lexer->type);
 		parse(tokens, lexer, parser, table);
 		lexer->idx++;
 	}
