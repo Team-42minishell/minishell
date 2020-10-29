@@ -41,9 +41,7 @@ void	execute_command(t_command *command)
 	else if (ft_strcmp(command->cmd, "exit") == 0)
 		cmd_exit(command);
 	else
-	{
-		ft_putstr("fail\n");
-	}
+		cmd_execve(command);
 }
 
 void	execute_job(t_table *table, t_job *job)

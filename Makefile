@@ -44,6 +44,7 @@ SRCS =	./src/main.c \
 		./src/utils_free.c \
 		./src/signal.c \
 		./src/exit.c \
+		./src/execve.c \
 		./src/error.c \
 		./src/setting.c \
 		./src/ft_is_format.c \

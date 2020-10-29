@@ -1,4 +1,3 @@
-/*
 #include "../includes/minishell.h"
 
 char		**parse_path_list(void)
@@ -8,11 +7,14 @@ char		**parse_path_list(void)
 	char	**result;
 
 	idx = -1;
+	/*
 	while (g_env_list[++idx].key)
 		if (ft_strncmp(g_env_list[idx].key, "PATH", 4) == 0
 			&& g_env_list[idx].key[4] == 0)
 			break ;
 	temp_value = find_value(g_env_list[idx].key);
+	*/
+	temp_value = find_value("PATH");
 	if (!(result = ft_split(temp_value, ':')))
 		return (NULL);
 	return (result);
@@ -86,39 +88,56 @@ static void	print_error_msg(char *cmd, char *msg, int exit_status,
 	ft_putstr_fd(": ", 2);
 	ft_putstr_fd(msg, 2);
 	ft_putstr_fd(".\n", 2);
-	set_exit_status(exit_status);
+	set_res(exit_status);
 	if (full_cmd != NULL)
 		free(*full_cmd);
 }
 
-void		run_another_program(char **full_cmd)
+void		set_exe_argv(char *full_cmd, char **arg_list, char ***exe_argv)
+{
+	char	**result;
+	int		len;
+	int		idx;
+
+	len = ft_len_doublestr(arg_list) + 1;
+	result = (char **)ft_calloc(sizeof(char *), (len + 1));
+	result[0] = ft_strdup(full_cmd);
+	idx = 0;
+	while (++idx < len)
+		result[idx] = ft_strdup(arg_list[idx - 1]);
+	*exe_argv = result;
+}
+
+void		run_another_program(char **full_cmd, t_command *cmd)
 {
 	pid_t	pid;
 	int		status;
 	int		ret;
+	char	**exe_argv;
 
 	pid = fork();
 	signal(SIGINT, (void *)sig_execve_handler);
 	signal(SIGQUIT, (void *)sig_execve_handler);
 	if (pid == 0)
 	{
-		char	*exe_argv[] = {*full_cmd, NULL};
+		set_exe_argv(*full_cmd, cmd->arg_list, &exe_argv);
 		execve(*full_cmd, exe_argv, g_envp);
+		ft_free_doublestr(&exe_argv);
 	}
 	else if (pid > 0)
 	{
 		ret = waitpid(pid, &status, WUNTRACED);
-		set_exit_status(WEXITSTATUS(status));
+		set_res(WEXITSTATUS(status));
 	}
 	else
 	{
 		ft_putstr_fd("error: fork fails.\n", 2);
-		set_exit_status(1);
+		set_res(1);
 	}
 	free(*full_cmd);
 }
 
-void		exec_cmd_path_env(char *cmd)
+void		cmd_execve(t_command *cmd)
 {
 	int		flag;
 	char	**path_list;
@@ -127,21 +146,20 @@ void		exec_cmd_path_env(char *cmd)
 	if (!(path_list = parse_path_list()))
 	{
 		ft_putstr_fd("error: can't allocate memory.\n", 2);
-		set_exit_status(1);
+		set_res(1);
 		return ;
 	}
 	full_cmd = NULL;
-	flag = get_cmd_run_flag(cmd, &full_cmd);
+	flag = get_cmd_run_flag(cmd->cmd, &full_cmd);
 	if (flag == -1)
-		flag = get_cmd_run_flag_with_path(cmd, path_list, &full_cmd);
+		flag = get_cmd_run_flag_with_path(cmd->cmd, path_list, &full_cmd);
 	free_double_pointer(path_list);
 	if (flag == 0)
-		run_another_program(&full_cmd);
+		run_another_program(&full_cmd, cmd);
 	else if (flag == 1)
-		print_error_msg(cmd, "command not found", 127, NULL);
+		print_error_msg(cmd->cmd, "command not found", 127, NULL);
 	else if (flag == 2)
-		print_error_msg(cmd, "is a directory", 126, &full_cmd);
+		print_error_msg(cmd->cmd, "is a directory", 126, &full_cmd);
 	else if (flag == 3)
-		print_error_msg(cmd, "Permission denied", 126, &full_cmd);
+		print_error_msg(cmd->cmd, "Permission denied", 126, &full_cmd);
 }
-*/

@@ -152,6 +152,11 @@ void	cmd_export(t_command *cmd);
 **	unset
 */
 void	cmd_unset(t_command *cmd);
+/*
+**	execve
+*/
+void		cmd_execve(t_command *cmd);
+
 
 /*
 **	utils_free.c
