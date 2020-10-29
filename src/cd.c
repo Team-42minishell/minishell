@@ -2,7 +2,7 @@
 //	이해 불가
 void	set_pwd_and_res(char *path)
 {
-	set_env(path);
+	set_env("PWD", path);
 	set_res(0);
 	ft_free_str(&path);
 	return ;

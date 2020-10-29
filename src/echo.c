@@ -16,6 +16,7 @@ void	print_echo_args(char **arg_list, int n_option)
 		ft_putstr_fd(arg_list[i], 1);
 		is_first_arg = FALSE;
 	}
+	set_res(0);
 	if (n_option)
 		return ;
 	ft_putstr_fd("\n", 1);

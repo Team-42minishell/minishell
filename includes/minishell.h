@@ -180,6 +180,7 @@ void	cmd_exit(t_command *command);
 **	error.c
 */
 void			error_builtin(char *cmd, char *arg, char *msg);
+void	error_execute(char *error_token, char *msg, int res);
 /*
 **	setting.c
 */
@@ -191,4 +192,13 @@ int		ft_is_format(char *str, char *format);
 int		check_char(char **str, char **format);
 int		check_string(char **str, char **format);
 void	handling_other(char **str, char **format);
+
+/*
+**	utils_fd.c
+*/
+int		get_fd(t_redir *redir);
+void	save_standard_fd(t_table *table);
+void	redirect_stdout_fd(t_table *table);
+void	restore_standart_fd(t_table *table);
+void	close_fd_and_pipes(void);
 #endif

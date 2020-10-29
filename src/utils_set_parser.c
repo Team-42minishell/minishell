@@ -6,6 +6,7 @@ void	set_redir_file(char **tokens, t_lexer *lexer, t_table *table)
 	
 	redir = get_last_redir(table);
 	redir->arg = ft_strdup(tokens[lexer->idx]);
+	return ;
 }
 
 void	set_command_cmd(char **tokens, t_lexer *lexer, t_parser *parser, t_table *table)
