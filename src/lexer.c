@@ -115,7 +115,7 @@ int		lexer(char **tokens)
 	while (tokens[lex->idx])
 	{
 		lex->type = type(tokens, lex->idx);
-		//printf("lexer : %s %c\n", tokens[lex->idx], lex->type);
+		printf("lexer : %s %c\n", tokens[lex->idx], lex->type);
 		if (!is_valid_token(tokens, lex))
 		{
 			if (!ft_strcmp(tokens[lex->idx], "\n"))

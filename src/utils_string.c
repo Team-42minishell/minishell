@@ -21,9 +21,9 @@ int		right_bracket(char *src)
 		if (!(src[i] == '$' && src[i + 1] == '{' && quote != '\''))
 			continue;
 		i += 2;
-		if (src[i] == '?' && src[i + 1] == '}')
+		if (src[i] == '?' && src[i + 1] != '}')
 			return (0);
-		while (src[i] && ft_is_set(src[i], "{}\'\""))
+		while (src[i] && !ft_is_set(src[i], "{}\'\""))
 			i++;
 		if (!src[i] || src[i] != '}')
 			return (0);

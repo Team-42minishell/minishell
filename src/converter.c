@@ -12,6 +12,7 @@ void	convert_res(char **ret, char *str, int *i, int first)
 		ft_realloc(ret, val[(*i)++]);
 	*i = j;
 	ft_free_str(&val);
+	return ;
 }
 
 void		convert_env(char **ret, char *str, int *i, int first)
