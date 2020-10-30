@@ -69,7 +69,10 @@ int			process_line1(char *line)
 	tokens = tokenizer(line);
 	ft_free_str(&line);
 	if (!lexer(tokens) || !(table = parser(tokens)))
+	{
+		free_double_pointer(tokens);
 		return (TRUE);
+	}
 	free_double_pointer(tokens);
 	first_table = table;
 	while (table)
@@ -92,24 +95,26 @@ int			main(int argc, char **argv, char **envp)
 {
 	char	*line;
 	char	*new_line;
-	// it's not good. but because of gcc option, argc and argv are used.
+
 	if (argc != 1)
 		argv[0] = NULL;
-
 	g_res = 0;
-	g_maxfd = 2;
 	g_envp = (char **)ft_dup_doublestr(envp);
 	signal(SIGINT, (void *)sig_handler);
 	signal(SIGQUIT, (void *)sig_handler);
-	//print_prompt();
 	while (TRUE)
 	{
 		display_prompt();
 		if (!get_next_line(0, &line))
-			break;
+		{
+			close_fd_and_pipes();
+			free(line);
+			ft_putendl_fd("exit", 1);
+			ft_free_doublestr(&g_envp);
+			exit(0);
+		}
 		new_line = ft_strjoin(line, "\n");
 		free(line);
-		//printf("%d", ft_strlen(line));
 		process_line1(new_line);
 	}
 	return (g_res);
