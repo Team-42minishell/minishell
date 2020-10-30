@@ -1,9 +1,16 @@
-#include "../includes/minishell.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   export.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sungslee <sungslee@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/30 21:54:52 by sungslee          #+#    #+#             */
+/*   Updated: 2020/10/30 22:04:53 by sungslee         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-/*
-** get_parsing_idx: find index where '=' is.
-** if '=' is at index 0, that means there is no key and occurs an error.
-*/
+#include "../includes/minishell.h"
 
 int		get_parsing_idx(char *arg)
 {
@@ -15,10 +22,6 @@ int		get_parsing_idx(char *arg)
 			return (idx);
 	return (-1);
 }
-
-/*
-** export_env: this func sets environment with arg by parsing key and value.
-*/
 
 int		export_env(char *arg)
 {
@@ -53,22 +56,16 @@ void	print_env_list(void)
 		ft_putstr(env_list[idx]);
 		ft_putstr("\n");
 	}
-	free_double_pointer(env_list);
+	ft_free_doublestr(&env_list);
 	set_res(0);
 }
-
-/*
-** cmd_export: set env or print the list of env.
-** if there is no export's arg, print env list.
-** otherwise, set env with key and value.
-** this func can set one or more arg at a time.
-*/
 
 void	cmd_export(t_command *cmd)
 {
 	int		idx;
+	int		res;
 
-	set_res(0);
+	res = 0;
 	if (!cmd->arg_list)
 		print_env_list();
 	else
@@ -77,7 +74,11 @@ void	cmd_export(t_command *cmd)
 		while (cmd->arg_list[++idx])
 		{
 			if (export_env(cmd->arg_list[idx]) == FALSE)
+			{
 				error_builtin("export", cmd->arg_list[idx], INVALID_IDENTIFIER);
+				res = 1;
+			}
 		}
 	}
+	set_res(res);
 }

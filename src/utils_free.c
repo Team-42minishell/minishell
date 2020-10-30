@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils_free.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sungslee <sungslee@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/30 21:35:34 by sungslee          #+#    #+#             */
+/*   Updated: 2020/10/30 21:35:37 by sungslee         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/minishell.h"
 
 void	free_redir_list(t_redir *redir)
@@ -16,7 +28,6 @@ void	free_redir_list(t_redir *redir)
 		ft_free(redir);
 		redir = tmp;
 	}
-	
 }
 
 void	free_job_list(t_job *job)
@@ -30,15 +41,15 @@ void	free_job_list(t_job *job)
 		if (job->command.cmd)
 			ft_free_str(&job->command.cmd);
 		if (job->command.arg_list)
-			free_double_pointer(job->command.arg_list);
+			ft_free_doublestr(&(job->command.arg_list));
 		if (job->redir_list)
 			free_redir_list(job->redir_list);
 		tmp = job->next;
 		ft_free(job);
 		job = tmp;
 	}
-	
 }
+
 void	free_tables(t_table *table)
 {
 	t_table	*tmp;

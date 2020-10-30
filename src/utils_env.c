@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils_env.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sungslee <sungslee@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/30 22:12:11 by sungslee          #+#    #+#             */
+/*   Updated: 2020/10/30 22:12:11 by sungslee         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/minishell.h"
 
 int		get_key_idx(char *key)
@@ -52,18 +64,4 @@ char	*find_value(char *key)
 	if (key_idx == -1)
 		return (NULL);
 	return (ft_strchr(g_envp[key_idx], '=') + 1);
-}
-
-/*
-** get_number_envs: return the number of environments.
-*/
-
-int		get_number_envs(void)
-{
-	int		idx;
-
-	idx = -1;
-	while (g_env_list[++idx].key)
-		;
-	return (idx);
 }

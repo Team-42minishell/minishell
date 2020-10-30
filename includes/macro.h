@@ -6,7 +6,7 @@
 /*   By: sungslee <sungslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 15:31:14 by sungslee          #+#    #+#             */
-/*   Updated: 2020/10/30 16:58:04 by sungslee         ###   ########.fr       */
+/*   Updated: 2020/10/30 21:42:33 by sungslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,6 @@
 # define FAIL_TO_GET_PATH	": Faild to get path, check 'PWD_BUFFER_SIZE'"
 # define NUMERIC_REQUIRED	": numeric argument required"
 # define INVALID_IDENTIFIER	"\': not a valid identifier"
+
+# define PWD_BUFFER_SIZE 300
 #endif

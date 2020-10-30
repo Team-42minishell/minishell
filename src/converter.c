@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   converter.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sungslee <sungslee@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/30 19:55:22 by sungslee          #+#    #+#             */
+/*   Updated: 2020/10/30 19:58:14 by sungslee         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/minishell.h"
 
-void	convert_res(char **ret, char *str, int *i, int first)
+static void		convert_res(char **ret, char *str, int *i, int first)
 {
 	char	*val;
 	int		j;
@@ -15,7 +27,7 @@ void	convert_res(char **ret, char *str, int *i, int first)
 	return ;
 }
 
-void		convert_env(char **ret, char *str, int *i, int first)
+static	void	convert_env(char **ret, char *str, int *i, int first)
 {
 	char	*name;
 	char	*val;
@@ -44,7 +56,6 @@ void		convert_env(char **ret, char *str, int *i, int first)
 	*i = j;
 }
 
-
 static void		convert(char **src, int first)
 {
 	int		i;
@@ -63,10 +74,7 @@ static void		convert(char **src, int first)
 			;
 		else if (opened != '\'' && str[i] == '$' \
 			&& str[i + 1] && !ft_is_set(str[i + 1], " \'\""))
-			{
-				//printf("%s\n", str);
-				convert_env(&ret, str, &i, first);
-			}
+			convert_env(&ret, str, &i, first);
 		else if (str[i] < 0)
 			ft_realloc(&ret, str[i] * -1);
 		else
@@ -77,7 +85,7 @@ static void		convert(char **src, int first)
 	*src = ret;
 }
 
-void	convert_job(t_job *job, int first)
+static	void	convert_job(t_job *job, int first)
 {
 	int		i;
 	t_redir	*redir;
@@ -98,10 +106,10 @@ void	convert_job(t_job *job, int first)
 		if (redir->arg)
 			convert(&redir->arg, first);
 		redir = redir->next;
-	}	
+	}
 }
 
-void	converter(t_table *table)
+void			converter(t_table *table)
 {
 	t_job	*job;
 	int		first;
@@ -110,7 +118,6 @@ void	converter(t_table *table)
 	job = table->job_list;
 	while (job)
 	{
-		//printf("%d %s\n", strlen(job->command.cmd), job->command.cmd);
 		convert_job(job, first);
 		job = job->next;
 		first = FALSE;

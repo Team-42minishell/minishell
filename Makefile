@@ -8,46 +8,34 @@ INCLIB = -Llibft -lft
 
 LIBFT = ./libft
 
-SRCS =	./src/main.c \
-		./src/get_next_line.c \
-		./src/parse_line.c \
-		./src/parse_quote.c \
-		./src/exec_cmds.c \
-		./src/builtin_cd.c \
-		./src/builtin_pwd.c \
-		./src/builtin_echo.c \
-		./src/builtin_env.c \
-		./src/builtin_export.c \
-		./src/builtin_export2.c \
-		./src/builtin_unset.c \
-		./src/builtin_exit.c \
-		./src/exec_cmd_path_env.c \
-		./src/utils.c \
-		./src/utils_env.c \
-		./src/tokenizer.c \
-		./src/lexer.c \
-		./src/utils_string.c \
-		./src/parser.c \
-		./src/utils_get_parser.c \
-		./src/utils_set_parser.c \
-		./src/converter.c \
-		./src/utils_converter.c \
+SRCS =	./src/cd.c \
 		./src/execute.c \
+		./src/ft_is_format.c \
 		./src/pwd.c \
-		./src/cd.c \
+		./src/utils_get_parser.c \
+		./src/converter.c \
+		./src/execve.c \
+		./src/get_next_line.c \
+		./src/setting.c \
+		./src/utils_converter.c \
+		./src/utils_pipe.c \
 		./src/echo.c \
+		./src/execve2.c \
+		./src/lexer.c \
+		./src/signal.c \
+		./src/utils_env.c \
+		./src/utils_set_parser.c \
 		./src/env.c \
+		./src/exit.c \
+		./src/main.c \
+		./src/tokenizer.c \
+		./src/utils_fd.c \
+		./src/utils_string.c \
+		./src/error.c \
 		./src/export.c \
+		./src/parser.c \
 		./src/unset.c \
 		./src/utils_free.c \
-		./src/signal.c \
-		./src/exit.c \
-		./src/execve.c \
-		./src/error.c \
-		./src/setting.c \
-		./src/ft_is_format.c \
-		./src/utils_fd.c \
-		./src/utils_pipe.c
 
 OBJS = $(SRCS:.c=.o)
 

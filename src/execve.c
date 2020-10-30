@@ -1,87 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   execve.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sungslee <sungslee@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/30 22:10:01 by sungslee          #+#    #+#             */
+/*   Updated: 2020/10/30 22:10:01 by sungslee         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/minishell.h"
-
-char		**parse_path_list(void)
-{
-	int		idx;
-	char	*temp_value;
-	char	**result;
-
-	idx = -1;
-	/*
-	while (g_env_list[++idx].key)
-		if (ft_strncmp(g_env_list[idx].key, "PATH", 4) == 0
-			&& g_env_list[idx].key[4] == 0)
-			break ;
-	temp_value = find_value(g_env_list[idx].key);
-	*/
-	temp_value = find_value("PATH");
-	/*
-	if (!(result = ft_split(temp_value, ':')))
-		return (NULL);
-		*/
-	result = ft_split(temp_value, ':');
-	return (result);
-}
-
-int			get_cmd_run_flag(char *cmd, char **full_cmd)
-{
-	struct stat	file_info;
-
-	if (cmd[0] == '/' || (cmd[0] == '.' && cmd[1] == '/'))
-	{
-		if (lstat(cmd, &file_info) == -1)
-			return (1);
-		if ((file_info.st_mode & S_IFDIR) != 0)
-			return (2);
-		if ((file_info.st_mode & S_IXUSR) == 0)
-			return (3);
-		else
-		{
-			*full_cmd = ft_strdup(cmd);
-			return (0);
-		}
-	}
-	return (-1);
-}
-
-char		*add_path_to_cmd(char *path, char *cmd)
-{
-	char	*temp;
-	char	*result;
-
-	temp = ft_strjoin(path, "/");
-	result = ft_strjoin(temp, cmd);
-	free(temp);
-	return (result);
-}
-
-int			get_cmd_run_flag_with_path(char *cmd, char **path_list,
-										char **full_cmd)
-{
-	int			idx;
-	int			flag;
-	struct stat	file_info;
-
-	idx = -1;
-	flag = -1;
-	while (path_list[++idx])
-	{
-		*full_cmd = add_path_to_cmd(path_list[idx], cmd);
-		if (lstat(*full_cmd, &file_info) == -1)
-		{
-			flag = 1;
-			free(*full_cmd);
-			continue ;
-		}
-		if ((file_info.st_mode & S_IFDIR) != 0)
-			return (2);
-		if ((file_info.st_mode & S_IXUSR) == 0)
-			return (3);
-		else
-			return (0);
-	}
-	return (flag);
-}
 
 static void	print_error_msg(char *cmd, char *msg, int exit_status,
 							char **full_cmd)
@@ -152,7 +81,7 @@ void		cmd_execve(t_command *cmd)
 	flag = get_cmd_run_flag(cmd->cmd, &full_cmd);
 	if (flag == -1)
 		flag = get_cmd_run_flag_with_path(cmd->cmd, path_list, &full_cmd);
-	free_double_pointer(path_list);
+	ft_free_doublestr(&path_list);
 	if (flag == 0)
 		run_another_program(&full_cmd, cmd);
 	else if (flag == 1)

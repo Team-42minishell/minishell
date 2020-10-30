@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils_fd.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sungslee <sungslee@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/30 20:29:21 by sungslee          #+#    #+#             */
+/*   Updated: 2020/10/30 20:29:22 by sungslee         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/minishell.h"
 
 int		get_fd(t_redir *redir)
@@ -20,9 +32,7 @@ int		get_fd(t_redir *redir)
 
 void	redirect_stdout_fd(t_table *table)
 {
-	// 1을 table->fd[1]로 파일 디스크럽터 복사
 	dup2(table->fd[1], 1);
-	// 2을 table->fd[2]로 파일 디스크럽터 복사
 	dup2(table->fd[2], 2);
 }
 

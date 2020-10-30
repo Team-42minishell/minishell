@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   signal.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sungslee <sungslee@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/30 21:35:24 by sungslee          #+#    #+#             */
+/*   Updated: 2020/10/30 21:35:25 by sungslee         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/minishell.h"
 
 void		sig_handler(int signo)
@@ -27,4 +39,3 @@ void		sig_execve_handler(int signo)
 		signal(SIGQUIT, (void *)sig_handler);
 	}
 }
-

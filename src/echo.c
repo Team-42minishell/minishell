@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   echo.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sungslee <sungslee@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/30 21:52:44 by sungslee          #+#    #+#             */
+/*   Updated: 2020/10/30 21:53:06 by sungslee         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/minishell.h"
 
 void	print_echo_args(char **arg_list, int n_option)
@@ -34,7 +46,7 @@ void	cmd_echo(t_command *command)
 	if (len == 0)
 	{
 		ft_putstr_fd("\n", 1);
-		return ;
+		return (set_res(0));
 	}
 	if (ft_strcmp(command->arg_list[0], "-n") == 0)
 	{

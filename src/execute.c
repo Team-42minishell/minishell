@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   execute.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sungslee <sungslee@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/30 20:30:24 by sungslee          #+#    #+#             */
+/*   Updated: 2020/10/30 21:57:43 by sungslee         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/minishell.h"
 
 int		execute_redirection(t_table *table, t_job *job)
@@ -33,7 +45,7 @@ void	execute_command(t_command *command)
 	else if (ft_strcmp(command->cmd, "echo") == 0)
 		cmd_echo(command);
 	else if (ft_strcmp(command->cmd, "env") == 0)
-		cmd_env();
+		cmd_env(command);
 	else if (ft_strcmp(command->cmd, "export") == 0)
 		cmd_export(command);
 	else if (ft_strcmp(command->cmd, "unset") == 0)
@@ -64,7 +76,7 @@ void	execute_job(t_table *table, t_job *job)
 	return ;
 }
 
-void	execute_table(t_table	*table)
+void	execute_table(t_table *table)
 {
 	int		status;
 
@@ -73,8 +85,7 @@ void	execute_table(t_table	*table)
 		return ;
 	save_standard_fd(table);
 	g_pipes = make_pipes(table->job_list);
-	if (table->sep_type == SEMI || table->sep_type == NONE)
-		execute_job(table, table->job_list);
+	execute_job(table, table->job_list);
 	while (wait(&status) > 0)
 		g_res = WEXITSTATUS(status);
 	restore_standard_fd(table);

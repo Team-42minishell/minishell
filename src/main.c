@@ -6,7 +6,7 @@
 /*   By: sungslee <sungslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/30 16:04:23 by sungslee          #+#    #+#             */
-/*   Updated: 2020/10/30 17:29:13 by sungslee         ###   ########.fr       */
+/*   Updated: 2020/10/30 21:25:14 by sungslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ static int	process_line(char *line)
 	ft_free_str(&line);
 	if (!lexer(tokens) || !(table = parser(tokens)))
 	{
-		free_double_pointer(tokens);
+		ft_free_doublestr(&tokens);
 		return (TRUE);
 	}
-	free_double_pointer(tokens);
+	ft_free_doublestr(&tokens);
 	first_table = table;
 	while (table)
 	{

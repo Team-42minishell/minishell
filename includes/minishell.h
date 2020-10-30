@@ -16,67 +16,18 @@
 # include "types.h"
 # include "macro.h"
 
-
-typedef	struct	s_env
-{
-	char	*key;
-	char	*value;
-}				t_env;
-
-t_env			*g_env_list;
-int				g_exit_status;
 char			**g_envp;
 int				*g_pipes;
 int				g_res;
 int				g_maxfd;
 int				g_fd;
 
-void			builtin_pwd(void);
-void			builtin_cd(char *line);
-void			builtin_echo(char *arg);
-void			builtin_env();
-void			builtin_export(char *line);
-void			builtin_unset(char *line);
-void			builtin_exit(char *line);
-
-/*
-**	parse_line.c
-*/
-char			**parse_line(char *line);
-/*
-**	parse_quote.c
-*/
-int				find_quote(char *line);
-char			*make_newline(char *line, int str_len);
-/*
-**	exec_cmds.c
-*/
-int				exec_buitlin(char *line);
-/*
-**	utils.c
-*/
-void			free_double_pointer(char **args);
-void			set_exit_status(int status);
 /*
 **	utils_env.c
 */
+int				get_key_idx(char *key);
+int				set_env(char *key, char *val);
 char			*find_value(char *key);
-int				get_number_envs(void);
-/*
-**  builtin_export.c
-*/
-int				does_exist_env_oldpwd(void);
-void			print_env_list(void);
-int				get_parsing_idx(char *arg);
-void			convert_empty_string_to_null(char **value);
-/*
-**  builtin_export2.c
-*/
-int				does_exist_same_env(char **key, char **value, int num_envs);
-void			set_env_list_last_data(char *key, char *value, int idx);
-void			make_new_env_list(char **key, char **value, int num_envs);
-void			builtin_export(char *line);
-
 /*
 **	tokenizer.c
 */
@@ -96,7 +47,8 @@ int				right_bracket(char *src);
 **	parser.c
 */
 t_table			*parser (char **tokens);
-void			parse(char **tokens, t_lexer *lexer, t_parser *parser, t_table *table);
+void			parse(char **tokens, t_lexer *lexer, t_parser *parser,
+						t_table *table);
 void			create_job(t_parser *parser, t_table *table);
 /*
 **	utils_get_parser.c
@@ -107,63 +59,64 @@ t_redir			*get_last_redir(t_table *table);
 /*
 **	utils_set_parser.c
 */
-void	set_command_arg(char **tokens, t_lexer *lexer, t_table *table);
-void	set_command_cmd(char **tokens, t_lexer *lexer, t_parser *parser, t_table *table);
-void	set_redir_file(char **tokens, t_lexer *lexer, t_table *table);
+void			set_command_arg(char **tokens, t_lexer *lexer, t_table *table);
+void			set_command_cmd(char **tokens, t_lexer *lexer, t_parser *parser,
+								t_table *table);
+void			set_redir_file(char **tokens, t_lexer *lexer, t_table *table);
 /*
 **	execute
 */
-void	execute_table(t_table	*table);
+void			execute_table(t_table	*table);
 /*
 **	converter
 */
-void	converter(t_table *table);
+void			converter(t_table *table);
 /*
 **	pwd
 */
-void		cmd_pwd(void);
+void			cmd_pwd(void);
 /*
 **	cd
 */
-void	cmd_cd(t_command *command);
+void			cmd_cd(t_command *command);
 /*
 **	echo
 */
-void	cmd_echo(t_command *cmd);
+void			cmd_echo(t_command *cmd);
 /*
 **	env
 */
-int		get_key_idx(char *key);
-int		set_env(char *key, char *val);
-void	cmd_env(void);
+void			cmd_env(t_command *cmd);
 /*
 **	export
 */
-void	cmd_export(t_command *cmd);
+void			cmd_export(t_command *cmd);
 /*
 **	unset
 */
-void	cmd_unset(t_command *cmd);
+void			cmd_unset(t_command *cmd);
 /*
 **	execve
 */
-void		cmd_execve(t_command *cmd);
-
-
+void			cmd_execve(t_command *cmd);
+/*
+**	execve2
+*/
+char			**parse_path_list(void);
+int				get_cmd_run_flag(char *cmd, char **full_cmd);
+char			*add_path_to_cmd(char *path, char *cmd);
+int				get_cmd_run_flag_with_path(char *cmd, char **path_list,
+										char **full_cmd);
 /*
 **	utils_free.c
 */
-void	free_redir_list(t_redir *redir);
-void	free_job_list(t_job *job);
-void	free_tables(t_table *table);
+void			free_redir_list(t_redir *redir);
+void			free_job_list(t_job *job);
+void			free_tables(t_table *table);
 /*
 **	utils_converter.c
 */
-int		open_handle(int *opened, char c);
-/*
-**	exec_cmd_path_env.c
-*/
-void			exec_cmd_path_env(char *cmd);
+int				open_handle(int *opened, char c);
 /*
 **	signal.c
 */
@@ -172,35 +125,35 @@ void			sig_execve_handler(int signo);
 /*
 **	exit.c
 */
-void	cmd_exit(t_command *command);
+void			cmd_exit(t_command *command);
 /*
 **	error.c
 */
 void			error_builtin(char *cmd, char *arg, char *msg);
-void	error_execute(char *error_token, char *msg, int res);
-void	error_tokenizer(char *error_token, char *msg, int res);
+void			error_execute(char *error_token, char *msg, int res);
+void			error_tokenizer(char *error_token, char *msg, int res);
 /*
 **	setting.c
 */
-void	set_res(int res);
+void			set_res(int res);
 /*
 **	ft_is_format.c
 */
-int		ft_is_format(char *str, char *format);
-int		check_char(char **str, char **format);
-void	handling_other(char **str, char **format);
+int				ft_is_format(char *str, char *format);
+int				check_char(char **str, char **format);
+void			handling_other(char **str, char **format);
 
 /*
 **	utils_fd.c
 */
-int		get_fd(t_redir *redir);
-void	save_standard_fd(t_table *table);
-void	redirect_stdout_fd(t_table *table);
-void	restore_standard_fd(t_table *table);
-void	close_fd_and_pipes(void);
+int				get_fd(t_redir *redir);
+void			save_standard_fd(t_table *table);
+void			redirect_stdout_fd(t_table *table);
+void			restore_standard_fd(t_table *table);
+void			close_fd_and_pipes(void);
 /*
 **	utils_pipe.c
 */
-int		*make_pipes(t_job *job);
-void	dup_pipe(t_job *job, int idx);
+int				*make_pipes(t_job *job);
+void			dup_pipe(t_job *job, int idx);
 #endif
