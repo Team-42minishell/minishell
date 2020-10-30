@@ -42,14 +42,14 @@ OBJS = $(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	# $(MAKE) -C $(LIBFT)
+	$(MAKE) -C $(LIBFT)
 	$(CC) $(CFLAGS) $(INCS) -o $(NAME) $(OBJS) $(INCLIB)
 
 clean:
-	# $(MAKE) clean -C $(LIBFT)
+	$(MAKE) clean -C $(LIBFT)
 
 fclean: clean
-	# $(MAKE) fclean -C $(LIBFT)
+	$(MAKE) fclean -C $(LIBFT)
 	rm -rf $(OBJS)
 	rm -rf $(NAME)
 

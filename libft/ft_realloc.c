@@ -6,12 +6,12 @@
 /*   By: sungslee <sungslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 10:56:44 by sungslee          #+#    #+#             */
-/*   Updated: 2020/10/19 15:26:13 by sungslee         ###   ########.fr       */
+/*   Updated: 2020/10/31 00:45:09 by sungslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
+
 char	*ft_realloc(char **ptr, char c)
 {
 	char	*ret;
@@ -24,9 +24,7 @@ char	*ft_realloc(char **ptr, char c)
 		return (0);
 	ft_memcpy(ret, *ptr, size);
 	ret[size] = c;
-	//printf("size : %d string : %s\n", size, ret);
 	ft_free(*ptr);
 	*ptr = ret;
 	return (ret);
 }
-
