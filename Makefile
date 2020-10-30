@@ -3,8 +3,7 @@ NAME = minishell
 INCS = -I./includes
 CC = gcc
 RM = rm -f
-# CFLAGS = -g -Wall -Wextra -Werror $(INCS)
-CFLAGS = -g $(INCS)
+CFLAGS = -g -Wall -Wextra -Werror $(INCS)
 INCLIB = -Llibft -lft
 
 LIBFT = ./libft
@@ -26,7 +25,6 @@ SRCS =	./src/main.c \
 		./src/utils.c \
 		./src/utils_env.c \
 		./src/tokenizer.c \
-		./src/utils_memory.c \
 		./src/lexer.c \
 		./src/utils_string.c \
 		./src/parser.c \
@@ -63,7 +61,7 @@ clean:
 	# $(MAKE) clean -C $(LIBFT)
 
 fclean: clean
-	#$(MAKE) fclean -C $(LIBFT)
+	# $(MAKE) fclean -C $(LIBFT)
 	rm -rf $(OBJS)
 	rm -rf $(NAME)
 

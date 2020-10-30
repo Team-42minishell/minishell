@@ -67,7 +67,6 @@ void	print_env_list(void)
 void	cmd_export(t_command *cmd)
 {
 	int		idx;
-	char	**arg_list;
 
 	set_res(0);
 	if (!cmd->arg_list)

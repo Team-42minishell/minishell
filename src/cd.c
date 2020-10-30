@@ -13,7 +13,7 @@ void	cmd_cd(t_command *command)
 	char	*home_path;
 	int		argc;
 
-	argc = two_ptr_size(command->arg_list);
+	argc = ft_len_doublestr(command->arg_list);
 	if (argc == 0)
 	{
 		home_path = ft_strdup(find_value("HOME"));

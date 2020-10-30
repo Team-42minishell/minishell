@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tokenizer.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sungslee <sungslee@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/30 16:31:35 by sungslee          #+#    #+#             */
+/*   Updated: 2020/10/30 16:31:41 by sungslee         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/minishell.h"
 
 static void		token_init(t_tokenizer *tool)
@@ -39,7 +51,7 @@ int				get_end(char *line, t_tokenizer *tool)
 	if (ft_is_space(line[i]))
 		return (!(ft_is_space(line[i + 1])));
 	if (ft_is_space(line[i + 1]))
-		return TRUE;
+		return (TRUE);
 	if (ft_is_set(line[i], "><|;"))
 	{
 		if (line[i] != line[i + 1])
@@ -91,13 +103,12 @@ char			**tokenizer(char *line)
 		if (get_end(line, &tool))
 		{
 			token = ft_substr(line, tool.start, tool.idx - tool.start + 1);
-			ft_realloc_double_str(&tokens, token);
+			ft_realloc_doublestr(&tokens, token);
 			ft_free_str(&token);
-			tool.start=  -1;
+			tool.start = -1;
 			tool.prev = 0;
 		}
 		tool.idx++;
 	}
-
 	return (tokens);
 }

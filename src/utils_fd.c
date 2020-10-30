@@ -3,7 +3,6 @@
 int		get_fd(t_redir *redir)
 {
 	int		fd;
-	char	*temp_path;
 
 	fd = -1;
 	if (redir->error)

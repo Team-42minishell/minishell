@@ -1,5 +1,14 @@
 #include "../includes/minishell.h"
 
+void	error_tokenizer(char *error_token, char *msg, int res)
+{
+	ft_putstr_fd(SHELL, 2);
+	ft_putstr_fd(msg, 2);
+	ft_putstr_fd(error_token, 2);
+	ft_putendl_fd("\'", 2);
+	set_res(res);
+}
+
 void	error_execute(char *error_token, char *msg, int res)
 {
 	ft_putstr_fd(SHELL, 2);

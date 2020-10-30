@@ -28,7 +28,7 @@ void	cmd_echo(t_command *command)
 	int		len;
 	int		n_option;
 
-	len = two_ptr_size(command->arg_list);
+	len = ft_len_doublestr(command->arg_list);
 	start_arg = command->arg_list;
 	n_option = FALSE;
 	if (len == 0)

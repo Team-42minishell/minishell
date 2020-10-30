@@ -1,13 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils_string.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sungslee <sungslee@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/30 16:53:31 by sungslee          #+#    #+#             */
+/*   Updated: 2020/10/30 16:53:33 by sungslee         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/minishell.h"
 
-void	handle_quote(int *quote, char c)
+static void		handle_quote(int *quote, char c)
 {
 	if (!(*quote))
 		*quote = c;
 	else if (*quote == c)
 		*quote = 0;
 }
-int		right_bracket(char *src)
+
+int				right_bracket(char *src)
 {
 	int		i;
 	int		quote;
@@ -31,8 +44,7 @@ int		right_bracket(char *src)
 	return (1);
 }
 
-// quote가 여러개인 경우 어떻게 처리 될까?
-int		right_qoute(char *src)
+int				right_quote(char *src)
 {
 	int		i;
 	int		quote;

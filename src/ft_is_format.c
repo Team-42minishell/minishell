@@ -1,31 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_is_format.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sungslee <sungslee@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/30 16:47:50 by sungslee          #+#    #+#             */
+/*   Updated: 2020/10/30 16:47:51 by sungslee         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/minishell.h"
 
-int		check_right(char **str, char **format)
-{
-	int			n;
-
-	n = 1;
-	while ((*format)[n] && (*format)[n] != ']')
-		n++;
-	if (!((*format)[n]))
-		return (0);
-	n = n - 1;
-	if (ft_strncmp(*str, (*format + 1), n) != 0)
-	{
-		if (*(*format + n + 2) == '?')
-		{
-			*format = *format + n + 3;
-			return (1);
-		}
-		else
-			return (0);
-	}
-	*format += (*(*format + n + 2) == '?') ? n + 3 : n + 2;
-	*str = *str + n;
-	return (1);
-}
-
-int		check_char(char **str, char **format)
+int			check_char(char **str, char **format)
 {
 	char		c;
 
@@ -42,19 +29,6 @@ int		check_char(char **str, char **format)
 		return (0);
 	*str = *str + 1;
 	*format = *format + 1;
-	return (1);
-}
-
-int		check_string(char **str, char **format)
-{
-	if (!check_char(str, format))
-		return (0);
-	*format = *format - 1;
-	while (check_char(str, format))
-		*format = *format - 1;
-	*format = *format + 1;
-	while (ft_is_set(*(*format), "?+"))
-		*format = *format + 1;
 	return (1);
 }
 
@@ -83,7 +57,7 @@ void		handling_others(char **str, char **format)
 		*format = *format + 1;
 }
 
-int				ft_is_format(char *str, char *format)
+int			ft_is_format(char *str, char *format)
 {
 	int			valid;
 
@@ -92,14 +66,7 @@ int				ft_is_format(char *str, char *format)
 	{
 		if (!ft_is_set(*format, "[cd* "))
 			return (0);
-		//if (*format == '[')
-		//	valid = check_right(&str, &format);
-		//else if (!ft_is_set(*(format + 1), "?+"))
-	//		valid = check_char(&str, &format);
-	//	else if (*(format + 1) == '+' && *(format + 2) != '?')
-	//		valid = check_string(&str, &format);
-	//	else
-			handling_others(&str, &format);
+		handling_others(&str, &format);
 	}
 	return ((!(*str) && !(*format) && valid) ? 1 : 0);
 }

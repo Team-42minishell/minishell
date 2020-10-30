@@ -1,5 +1,4 @@
 #include "libft.h"
-#include <stdio.h>
 
 char	**ft_realloc_doublestr(char ***strs_ref, char *item)
 {

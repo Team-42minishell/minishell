@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sungslee <sungslee@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/30 17:28:54 by sungslee          #+#    #+#             */
+/*   Updated: 2020/10/30 17:28:55 by sungslee         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/minishell.h"
 
 void		create_job(t_parser *parser, t_table *table)
@@ -22,7 +34,8 @@ void		create_job(t_parser *parser, t_table *table)
 	return ;
 }
 
-void		create_table(char **tokens, t_lexer *lexer, t_parser *parser, t_table *table)
+void		create_table(char **tokens, t_lexer *lexer,
+						t_parser *parser, t_table *table)
 {
 	t_table	*last_table;
 	t_table	*new_table;
@@ -38,7 +51,8 @@ void		create_table(char **tokens, t_lexer *lexer, t_parser *parser, t_table *tab
 	create_job(parser, table);
 }
 
-void		create_redir(char **tokens, t_lexer *lexer, t_parser *parser, t_table *table)
+void		create_redir(char **tokens, t_lexer *lexer,
+						t_parser *parser, t_table *table)
 {
 	t_job		*last_job;
 	t_redir		*last_redir;
@@ -61,14 +75,13 @@ void		create_redir(char **tokens, t_lexer *lexer, t_parser *parser, t_table *tab
 		last_job->redir_list = new_redir;
 		return ;
 	}
-	printf("redir 4\n");
 	last_redir->next = new_redir;
 	return ;
 }
 
-void		parse(char **tokens, t_lexer *lexer, t_parser *parser, t_table *table)
+void		parse(char **tokens, t_lexer *lexer,
+			t_parser *parser, t_table *table)
 {
-	//printf("lexer->idx : %d // tokens : %s // lexer->type : %c\n", lexer->idx, tokens[lexer->idx], lexer->type);
 	if (ft_is_set(lexer->type, "SF"))
 		return ;
 	if (ft_is_set(lexer->type, "Y") && !token_in(tokens, lexer, NO_BACK_ARG))
@@ -76,19 +89,13 @@ void		parse(char **tokens, t_lexer *lexer, t_parser *parser, t_table *table)
 	else if (ft_is_set(lexer->type, "P"))
 		create_job(parser, table);
 	else if (ft_is_set(lexer->type, "GHL"))
-	{
 		create_redir(tokens, lexer, parser, table);
-	}
 	else if (ft_is_set(lexer->type, "NC"))
 	{
-		// printf("lexer->idx : %d // tokens : %s // lexer->type : %c\n", lexer->idx, tokens[lexer->idx], lexer->type);
 		if (lexer->type == 'N' && token_in(tokens, lexer, BACK_X_GREAT))
 			parser->fd = TRUE;
 		else if (token_in(tokens, lexer, FRONT_REDIR))
-		{
-			// printf("hello\n");
 			set_redir_file(tokens, lexer, table);
-		}
 		else if (parser->command)
 			set_command_arg(tokens, lexer, table);
 		else
@@ -96,7 +103,7 @@ void		parse(char **tokens, t_lexer *lexer, t_parser *parser, t_table *table)
 	}
 }
 
-t_table		*parser (char **tokens)
+t_table		*parser(char **tokens)
 {
 	t_table		*table;
 	t_lexer		*lexer;
@@ -109,12 +116,11 @@ t_table		*parser (char **tokens)
 	if (!(table = (t_table *)ft_calloc(sizeof(t_table), 1)))
 		return (0);
 	create_job(parser, table);
-	lexer->len = two_ptr_size(tokens);
+	lexer->len = ft_len_doublestr(tokens);
 	lexer->idx = 0;
 	while (tokens[lexer->idx])
 	{
 		lexer->type = type(tokens, lexer->idx);
-		//printf("string : %s // %d : %c\n", tokens[lexer->idx], lexer->type, lexer->type);
 		parse(tokens, lexer, parser, table);
 		lexer->idx++;
 	}

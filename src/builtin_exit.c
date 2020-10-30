@@ -43,7 +43,7 @@ void	builtin_exit(char *line)
 		set_exit_status(1);
 		return ;
 	}
-	if (two_ptr_size(arg_list) > 2)
+	if (ft_len_doublestr(arg_list) > 2)
 	{
 		ft_putstr_fd("error: exit: too many arguments.\n", 2);
 		set_exit_status(1);

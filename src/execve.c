@@ -114,8 +114,6 @@ void		set_exe_argv(char *full_cmd, char **arg_list, char ***exe_argv)
 void		run_another_program(char **full_cmd, t_command *cmd)
 {
 	pid_t	pid;
-	int		status;
-	int		ret;
 	char	**exe_argv;
 
 	pid = fork();

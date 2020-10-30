@@ -2,9 +2,6 @@
 
 void		sig_handler(int signo)
 {
-	char	buffer[MAXPATHLEN];
-	char	*current_path;
-
 	if (signo == SIGINT)
 	{
 		ft_putstr("\b\b  \b\b\n");

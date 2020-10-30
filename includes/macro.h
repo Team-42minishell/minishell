@@ -6,7 +6,7 @@
 /*   By: sungslee <sungslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 15:31:14 by sungslee          #+#    #+#             */
-/*   Updated: 2020/10/19 15:31:15 by sungslee         ###   ########.fr       */
+/*   Updated: 2020/10/30 16:58:04 by sungslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@
 */
 # define FRONT_REDIR		"G-*,SG-*,H-*,SH-*,L-*,SL-*,M-*,SM-*"
 # define FRONT_REDIR_BACK_X	"G-X,SG-X,H-X,SH-X,L-X,SL-X,M-X,SM-X"
-# define FRONT_EMP_REDIR	"EG-*,EH-*,EL-*,EM-*"
 # define FRONT_ALNUM		"N-*,C-*,SN-*,SC-*"
 # define BACK_REDIR			"*-G,*-SG,*-H,*-SH,*-L,*-SL,*-M,*-SM"
 # define NO_BACK_ARG		"*-X,*-SX,*-F,*-SF"

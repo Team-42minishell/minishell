@@ -48,7 +48,7 @@ char	**process_line(char *line)
 	char	*trim;
 
 	split_ptr = ft_split(line, ';');
-	size = two_ptr_size(split_ptr);
+	size = ft_len_doublestr(split_ptr);
 	res = ft_calloc(sizeof(char *), size + 1);
 	i = -1;
 	while (split_ptr[++i])

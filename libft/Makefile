@@ -6,7 +6,7 @@
 #    By: sungslee <sungslee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/08 20:19:19 by sungslee          #+#    #+#              #
-#    Updated: 2020/10/27 20:45:59 by yshin            ###   ########.fr        #
+#    Updated: 2020/10/30 15:33:38 by sungslee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,7 +87,6 @@ OBJS = ${SRCS:.c=.o}
 HEAD = libft.h
 CC		= gcc
 CFLAGS	= -g -Wall -Wextra -Werror
-# CFLAGS	= -Wall -Wextra -Werror
 all:	${NAME}
 
 bonus : ${NAME}

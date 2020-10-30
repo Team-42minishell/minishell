@@ -56,7 +56,6 @@ int				exec_buitlin(char *line);
 **	utils.c
 */
 void			free_double_pointer(char **args);
-int				two_ptr_size(char **ptr);
 void			set_exit_status(int status);
 /*
 **	utils_env.c
@@ -83,22 +82,15 @@ void			builtin_export(char *line);
 */
 char			**tokenizer(char *line);
 /*
-**	memory.c
-*/
-char			**ft_realloc_double_str(char ***strs_ref, char *item);
-int				ft_free_str(char **str);
-/*
 **	lexer.c
 */
 int				lexer(char **tokens);
 char			type(char **tokens, int idx);
 int				token_in(char **tokens, t_lexer *lex, char *format);
-t_bool			is_valid_token(char **tokens, t_lexer *lex);
-t_bool			check_seq(char **tokens, t_lexer *lex);
 /*
 **	utils_string.c
 */
-int				right_qoute(char *src);
+int				right_quote(char *src);
 int				right_bracket(char *src);
 /*
 **	parser.c
@@ -186,6 +178,7 @@ void	cmd_exit(t_command *command);
 */
 void			error_builtin(char *cmd, char *arg, char *msg);
 void	error_execute(char *error_token, char *msg, int res);
+void	error_tokenizer(char *error_token, char *msg, int res);
 /*
 **	setting.c
 */
@@ -195,7 +188,6 @@ void	set_res(int res);
 */
 int		ft_is_format(char *str, char *format);
 int		check_char(char **str, char **format);
-int		check_string(char **str, char **format);
 void	handling_other(char **str, char **format);
 
 /*
