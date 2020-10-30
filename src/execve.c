@@ -15,8 +15,11 @@ char		**parse_path_list(void)
 	temp_value = find_value(g_env_list[idx].key);
 	*/
 	temp_value = find_value("PATH");
+	/*
 	if (!(result = ft_split(temp_value, ':')))
 		return (NULL);
+		*/
+	result = ft_split(temp_value, ':');
 	return (result);
 }
 
@@ -144,8 +147,7 @@ void		cmd_execve(t_command *cmd)
 
 	if (!(path_list = parse_path_list()))
 	{
-		ft_putstr_fd("error: can't allocate memory.\n", 2);
-		set_res(1);
+		print_error_msg(cmd->cmd, "command not found", 127, NULL);
 		return ;
 	}
 	full_cmd = NULL;
