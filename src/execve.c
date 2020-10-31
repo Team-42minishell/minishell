@@ -6,7 +6,7 @@
 /*   By: sungslee <sungslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/30 22:10:01 by sungslee          #+#    #+#             */
-/*   Updated: 2020/10/31 11:17:16 by yshin            ###   ########.fr       */
+/*   Updated: 2020/10/31 17:04:09 by yshin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void		cmd_execve(t_command *cmd)
 	char	**path_list;
 	char	*full_cmd;
 
+	set_res(0);
 	if (!(path_list = parse_path_list()))
 	{
 		print_error_msg(cmd->cmd, "command not found", 127, NULL);

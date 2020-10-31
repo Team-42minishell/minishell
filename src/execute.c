@@ -6,7 +6,7 @@
 /*   By: sungslee <sungslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/30 20:30:24 by sungslee          #+#    #+#             */
-/*   Updated: 2020/10/30 21:57:43 by sungslee         ###   ########.fr       */
+/*   Updated: 2020/10/31 17:00:26 by yshin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	execute_table(t_table *table)
 	g_pipes = make_pipes(table->job_list);
 	execute_job(table, table->job_list);
 	while (wait(&status) > 0)
-		g_res = WEXITSTATUS(status);
+		g_res = g_res == 0 ? WEXITSTATUS(status) : g_res;
 	restore_standard_fd(table);
 	close_fd_and_pipes();
 }

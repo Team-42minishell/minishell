@@ -6,7 +6,7 @@
 /*   By: sungslee <sungslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/30 22:09:35 by sungslee          #+#    #+#             */
-/*   Updated: 2020/10/30 22:09:35 by sungslee         ###   ########.fr       */
+/*   Updated: 2020/10/31 16:40:10 by yshin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void	cmd_exit(t_command *command)
 	set_res(0);
 	if (command->arg_list)
 	{
-		if (!ft_is_number(command->arg_list[0]))
+		if (command->arg_list[0][0] != '-'
+			&& !ft_is_number(command->arg_list[0]))
 		{
 			error_builtin("exit", command->arg_list[0], NUMERIC_REQUIRED);
 			set_res(255);
