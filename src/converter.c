@@ -6,7 +6,7 @@
 /*   By: sungslee <sungslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/30 19:55:22 by sungslee          #+#    #+#             */
-/*   Updated: 2020/10/30 19:58:14 by sungslee         ###   ########.fr       */
+/*   Updated: 2020/10/31 17:01:59 by sungslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void		convert_res(char **ret, char *str, int *i, int first)
 	return ;
 }
 
-static	void	convert_env(char **ret, char *str, int *i, int first)
+static void		convert_env(char **ret, char *s, int *i, int first)
 {
 	char	*name;
 	char	*val;
@@ -35,18 +35,18 @@ static	void	convert_env(char **ret, char *str, int *i, int first)
 	int		j;
 	char	end;
 
-	if (str[*i + 1] == '?' || (str[*i + 1] == '{' && str[*i + 2] == '?'))
-		return (convert_res(ret, str, i, first));
+	if (s[*i + 1] == '?' || (s[*i + 1] == '{' && s[*i + 2] == '?'))
+		return (convert_res(ret, s, i, first));
 	j = *i + 1;
-	if (!str[j])
+	if (!s[j])
 		return ;
-	bracket = (str[j] == '{') ? TRUE : FALSE;
+	bracket = (s[j] == '{') ? TRUE : FALSE;
 	j += (bracket) ? 1 : 0;
 	end = (bracket) ? '}' : ' ';
 	name = 0;
-	while (str[j] && str[j] != end && !ft_is_set(str[j], "\'\""))
-		ft_realloc(&name, str[j++]);
-	if (!str[j] || end == ' ')
+	while (s[j] && s[j] != end && !ft_is_set(s[j], "\'\"") && s[j] != ':')
+		ft_realloc(&name, s[j++]);
+	if (!s[j] || end == ' ')
 		j--;
 	val = find_value(name);
 	*i = 0;
