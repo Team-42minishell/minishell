@@ -6,7 +6,7 @@
 /*   By: sungslee <sungslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/30 22:10:01 by sungslee          #+#    #+#             */
-/*   Updated: 2020/10/30 22:10:01 by sungslee         ###   ########.fr       */
+/*   Updated: 2020/10/31 11:17:16 by yshin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void		run_another_program(char **full_cmd, t_command *cmd)
 	{
 		if (cmd->idx != 0)
 			close(g_pipes[cmd->idx * 2 - 1]);
-		set_exe_argv(*full_cmd, cmd->arg_list, &exe_argv);
+		set_exe_argv(cmd->cmd, cmd->arg_list, &exe_argv);
 		execve(*full_cmd, exe_argv, g_envp);
 		ft_free_doublestr(&exe_argv);
 	}
