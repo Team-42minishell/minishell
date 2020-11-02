@@ -6,7 +6,7 @@
 /*   By: sungslee <sungslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/30 16:04:23 by sungslee          #+#    #+#             */
-/*   Updated: 2020/10/30 21:25:14 by sungslee         ###   ########.fr       */
+/*   Updated: 2020/11/02 19:30:39 by yshin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,28 @@ void		display_prompt(void)
 	ft_putstr_fd("catshell$ ", 1);
 }
 
+int			get_line(char **line)
+{
+	char	buf[2];
+	char	*temp;
+
+	ft_bzero(buf, 2);
+	*line = ft_strdup("");
+	temp = 0;
+	while (*buf != '\n')
+	{
+		while (read(0, buf, 1) && *buf != '\n')
+		{
+			temp = ft_strjoin(*line, buf);
+			free(*line);
+			*line = temp;
+		}
+		if (ft_strlen(*line) == 0 && *buf != '\n')
+			return (0);
+	}
+	return (1);
+}
+
 int			main(int argc, char **argv, char **envp)
 {
 	char	*line;
@@ -51,14 +73,13 @@ int			main(int argc, char **argv, char **envp)
 		argv[0] = NULL;
 	g_res = 0;
 	g_envp = (char **)ft_dup_doublestr(envp);
-	signal(SIGINT, (void *)sig_handler);
-	signal(SIGQUIT, (void *)sig_handler);
 	while (TRUE)
 	{
+		signal(SIGINT, (void *)sig_handler);
+		signal(SIGQUIT, (void *)sig_handler);
 		display_prompt();
-		if (!get_next_line(0, &line))
+		if (!get_line(&line))
 		{
-			close_fd_and_pipes();
 			free(line);
 			ft_putendl_fd("exit", 1);
 			ft_free_doublestr(&g_envp);
