@@ -6,7 +6,7 @@
 /*   By: sungslee <sungslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/30 22:11:32 by sungslee          #+#    #+#             */
-/*   Updated: 2020/10/30 22:11:34 by sungslee         ###   ########.fr       */
+/*   Updated: 2020/11/03 01:04:14 by sungslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,19 @@
 
 void	error_tokenizer(char *error_token, char *msg, int res)
 {
+	int		i;
+
 	ft_putstr_fd(SHELL, 2);
+	i = -1;
+	while (error_token[++i])
+	{
+		if (error_token[i] < 0 || error_token[i] == '\'')
+		{
+			ft_putendl_fd(QUOTE_ERROR, 2);
+			set_res(res);
+			return ;
+		}
+	}
 	ft_putstr_fd(msg, 2);
 	ft_putstr_fd(error_token, 2);
 	ft_putendl_fd("\'", 2);

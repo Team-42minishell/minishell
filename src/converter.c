@@ -6,7 +6,7 @@
 /*   By: sungslee <sungslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/30 19:55:22 by sungslee          #+#    #+#             */
-/*   Updated: 2020/10/31 17:12:53 by yshin            ###   ########.fr       */
+/*   Updated: 2020/11/03 00:32:21 by sungslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static	void	convert_env(char **ret, char *s, int *i, int first)
 	j += (bracket) ? 1 : 0;
 	end = (bracket) ? '}' : ' ';
 	name = 0;
-	while (s[j] && s[j] != end && !ft_is_set(s[j], "\'\"") && s[j] != ':')
+	while (s[j] && s[j] != end && !ft_is_set(s[j], "\'\":="))
 		ft_realloc(&name, s[j++]);
 	if (!s[j] || end == ' ')
 		j--;

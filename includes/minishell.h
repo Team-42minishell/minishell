@@ -6,7 +6,7 @@
 /*   By: sungslee <sungslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 00:47:38 by sungslee          #+#    #+#             */
-/*   Updated: 2020/10/31 00:47:46 by sungslee         ###   ########.fr       */
+/*   Updated: 2020/11/03 00:34:59 by sungslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,4 +167,12 @@ void			close_fd_and_pipes(void);
 */
 int				*make_pipes(t_job *job);
 void			dup_pipe(t_job *job, int idx);
+/*
+**	get_line.c
+*/
+int				get_line(char **line);
+/*
+**	escaper.c
+*/
+char			*escaper(char *old_line);
 #endif

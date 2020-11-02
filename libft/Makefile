@@ -6,7 +6,7 @@
 #    By: sungslee <sungslee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/08 20:19:19 by sungslee          #+#    #+#              #
-#    Updated: 2020/10/30 15:33:38 by sungslee         ###   ########.fr        #
+#    Updated: 2020/11/03 00:27:05 by sungslee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,7 +81,8 @@ SRCS =	ft_isalpha.c \
 		ft_realloc_doublestr.c \
 		ft_remove_doublestr.c \
 		ft_free_doublestr.c \
-		ft_free_str.c
+		ft_free_str.c \
+
 NAME = libft.a
 OBJS = ${SRCS:.c=.o}
 HEAD = libft.h
