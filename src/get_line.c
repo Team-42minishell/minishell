@@ -1,22 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   get_line.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sungslee <sungslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/08 19:57:45 by sungslee          #+#    #+#             */
-/*   Updated: 2020/11/03 01:00:05 by sungslee         ###   ########.fr       */
+/*   Created: 2020/11/03 00:30:32 by sungslee          #+#    #+#             */
+/*   Updated: 2020/11/03 00:34:08 by sungslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/minishell.h"
 
-void		ft_putendl_fd(char *s, int fd)
+int			get_line(char **line)
 {
-	if (s == NULL)
-		return ;
-	ft_putstr_fd(s, fd);
-	write(fd, "\n", 1);
-	return ;
+	char	buf[2];
+	char	*temp;
+
+	ft_bzero(buf, 2);
+	*line = ft_strdup("");
+	temp = 0;
+	while (*buf != '\n')
+	{
+		while (read(0, buf, 1) && *buf != '\n')
+		{
+			temp = ft_strjoin(*line, buf);
+			free(*line);
+			*line = temp;
+		}
+		if (ft_strlen(*line) == 0 && *buf != '\n')
+			return (0);
+	}
+	return (1);
 }

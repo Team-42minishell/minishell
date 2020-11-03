@@ -6,7 +6,7 @@
 /*   By: sungslee <sungslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 15:31:14 by sungslee          #+#    #+#             */
-/*   Updated: 2020/10/30 21:42:33 by sungslee         ###   ########.fr       */
+/*   Updated: 2020/11/03 01:02:57 by sungslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@
 # define SHELL				"catshell : "
 # define NOT_PRINT_ASCII	"Failed print ascii art"
 # define LEXER_ERROR		"syntax error near unexpected token `"
+# define QUOTE_ERROR		"quote error"
 # define REDIR_AMBIGOUS		"ambiguous redirect"
 # define NO_SUCH_ENTRY		"No such file or directory"
 # define PERMISSION_DENIED	"permission denied"

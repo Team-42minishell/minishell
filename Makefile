@@ -36,7 +36,8 @@ SRCS =	./src/cd.c \
 		./src/parser.c \
 		./src/unset.c \
 		./src/utils_free.c \
-
+		./src/get_line.c \
+		./src/escaper.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
