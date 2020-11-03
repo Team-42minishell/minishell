@@ -6,7 +6,7 @@
 /*   By: sungslee <sungslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 19:21:29 by sungslee          #+#    #+#             */
-/*   Updated: 2020/11/03 00:27:07 by sungslee         ###   ########.fr       */
+/*   Updated: 2020/11/03 12:26:40 by yshin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ int					ft_strncmp(const char *s1, const char *s2, size_t n);
 int					ft_tolower(int c);
 int					ft_toupper(int c);
 int					ft_atoi(const char *str);
+long long int		ft_atoll(const char *str);
 int					ft_putchar(char c);
 int					ft_putstr(char *s);
 int					ft_putnstr(char *s, int n);

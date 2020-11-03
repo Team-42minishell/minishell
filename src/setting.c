@@ -6,13 +6,13 @@
 /*   By: sungslee <sungslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/30 22:11:59 by sungslee          #+#    #+#             */
-/*   Updated: 2020/10/30 22:11:59 by sungslee         ###   ########.fr       */
+/*   Updated: 2020/11/03 12:28:50 by yshin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	set_res(int res)
+void	set_res(long long int res)
 {
 	g_res = res;
 	return ;

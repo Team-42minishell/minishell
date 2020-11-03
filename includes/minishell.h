@@ -6,7 +6,7 @@
 /*   By: sungslee <sungslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 00:47:38 by sungslee          #+#    #+#             */
-/*   Updated: 2020/11/03 00:34:59 by sungslee         ###   ########.fr       */
+/*   Updated: 2020/11/03 12:25:21 by yshin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,7 @@ void			error_tokenizer(char *error_token, char *msg, int res);
 /*
 **	setting.c
 */
-void			set_res(int res);
+void			set_res(long long int res);
 /*
 **	ft_is_format.c
 */

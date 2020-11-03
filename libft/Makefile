@@ -6,7 +6,7 @@
 #    By: sungslee <sungslee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/08 20:19:19 by sungslee          #+#    #+#              #
-#    Updated: 2020/11/03 00:27:05 by sungslee         ###   ########.fr        #
+#    Updated: 2020/11/03 12:26:20 by yshin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,7 @@ SRCS =	ft_isalpha.c \
 		ft_lstiter.c \
 		ft_lstmap.c	\
 		ft_atoi.c	\
+		ft_atoll.c	\
 		ft_putchar_fd.c \
 		ft_putstr_fd.c \
 		ft_putendl_fd.c \
